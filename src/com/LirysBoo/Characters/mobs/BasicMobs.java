@@ -1,5 +1,5 @@
-package com.LirysBoo.Enemies.mobs;
-import com.LirysBoo.Enemies.Character;
+package com.LirysBoo.Characters.mobs;
+import com.LirysBoo.Characters.Character;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.LirysBoo.Enemies;
+package com.LirysBoo.Characters;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Character {

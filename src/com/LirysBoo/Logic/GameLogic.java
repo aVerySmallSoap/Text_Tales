@@ -1,7 +1,7 @@
 package com.LirysBoo.Logic;
-import com.LirysBoo.Enemies.Player;
-import com.LirysBoo.Enemies.mobs.BasicMobs;
-import static com.LirysBoo.Enemies.mobs.BasicMobs.basicMobsList;
+import com.LirysBoo.Characters.Player;
+import com.LirysBoo.Characters.mobs.BasicMobs;
+
 import java.util.Scanner;
 
 public class GameLogic {

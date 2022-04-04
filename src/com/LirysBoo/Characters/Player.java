@@ -1,4 +1,4 @@
-package com.LirysBoo.Enemies;
+package com.LirysBoo.Characters;
 
 public class Player extends Character {
 
