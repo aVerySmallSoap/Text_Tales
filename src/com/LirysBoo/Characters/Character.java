@@ -6,14 +6,15 @@ public class Character {
     private int HP, baseAttack,baseDefense;
     //TODO: leveling system(exp, stats), shop(gold, items)
 
+    //Allows us to create a blank Character object
+    public Character() {
+    }
+
     public Character(String name, int baseMaxHP, int HP, int baseAttack, int baseDefense){
         this.name = name;
         this.HP = baseMaxHP;
         this.baseAttack = baseAttack;
         this.baseDefense = baseDefense;
-    }
-    //Allows us to create a blank Character object
-    public Character() {
     }
 
     // Getters & Setters
