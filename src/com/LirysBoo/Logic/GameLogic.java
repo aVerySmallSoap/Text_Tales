@@ -2,7 +2,6 @@ package com.LirysBoo.Logic;
 import com.LirysBoo.Enemies.Player;
 import com.LirysBoo.Enemies.mobs.BasicMobs;
 import static com.LirysBoo.Enemies.mobs.BasicMobs.basicMobsList;
-import java.io.*;
 import java.util.Scanner;
 
 public class GameLogic {
@@ -12,8 +11,6 @@ public class GameLogic {
     private final Player player = new Player(name);
     private final BasicMobs basicMobs = new BasicMobs();
     private final int storyChap = 0;
-    private int attempts; //iterate me to finish a story!
-    private final File saveFile = new File("savedAttempts");
 
     // Helper methods
 
@@ -68,37 +65,11 @@ public class GameLogic {
                 nameSet = true;
                 System.out.println("I am an example of a story. Nothing much but just to fill in shit.\n"
                         + "Nevertheless, welcome! " + name); // remove me
-                enterAnythingToContinue();
             }
         }while (!nameSet);
     }
 
     //WIP Save system
-    private void setAttempts(int attempts){
-        try {
-            FileWriter numberOfAttempts = new FileWriter("savedAttempts");
-            numberOfAttempts.write("Your number of attempts: " + attempts);
-            numberOfAttempts.close();
-        } catch (IOException e) {
-            System.out.println("Something has occurred! And I don't know what and where!");
-            e.printStackTrace();
-        }
-    }
-
-    private void getAttempts(){
-        try {
-            FileReader numberOfAttempts = new FileReader("savedAttempts");
-            char[] r = new char[100];
-            numberOfAttempts.read(r);
-            for (char c: r) {
-                if(c == attempts){
-                    setAttempts(attempts);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     //TODO: BattleSystem() -> desBOO
     //private void battleSystem(){} finish me!
@@ -108,16 +79,10 @@ public class GameLogic {
 
     /**
      * Main Game Logic
-     * @return game
+     *
      */
     public void gameRunning(){
         startScreen();
-        if(saveFile.exists()){
-            attempts++;
-        } else if (!saveFile.exists())
-        setAttempts(attempts);
-        attempts++;
-        System.out.println(attempts);
         while (isGameRunning){
 
 

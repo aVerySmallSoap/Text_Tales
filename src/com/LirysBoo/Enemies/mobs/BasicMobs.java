@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BasicMobs extends Character{
+
     //Allows us to create a blank BasicMobs object
     public BasicMobs(){}
 
