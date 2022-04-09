@@ -87,7 +87,7 @@ public class GameLogic {
     //TODO: BattleSystem() -> desBOO
     //private void battleSystem(){} finish me!
     /*
-    if possible, include an Encounter() method to generate random encounters
+    if possible, include an Encounter() method to generate random encounters.
      */
 
     /**
