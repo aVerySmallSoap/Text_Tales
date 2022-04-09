@@ -63,6 +63,8 @@ public class GameLogic {
             System.out.println("Are you sure? Y/N");
             char choice = scanner.next().charAt(0);
             if(String.valueOf(choice).equalsIgnoreCase("y")){
+                System.out.println("Hello! " + name + "!");
+                enterAnythingToContinue();
                 nameSet = true;
             }
         }while (!nameSet);
