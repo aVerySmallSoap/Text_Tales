@@ -1,28 +1,29 @@
 package com.LirysBoo.Logic;
 import com.LirysBoo.Characters.Player;
 import com.LirysBoo.Characters.mobs.BasicMobs;
-
+import java.util.Random;
 import java.util.Scanner;
 
 public class GameLogic {
     public String name;
-    public final Scanner scanner = new Scanner(System.in);
+    public static final Scanner scanner = new Scanner(System.in);
     public static boolean isGameRunning = true;
     private final Player player = new Player(name);
-    private final BasicMobs basicMobs = new BasicMobs();
+    private final static BasicMobs basicMobs = new BasicMobs();
     private final int storyChap = 0;
+    public static final Random rand = new Random();
 
     // Helper methods
 
     //Clears the console
-    public void scrollingClear(){
+    public static void scrollingClear(){
         for (int i = 0; i < 50; i++) {
             System.out.println(" ");
         }
     }
 
     //Wait on player action
-    public void enterAnythingToContinue(){
+    public static void enterAnythingToContinue(){
         System.out.println("Enter any key to continue...");
         scanner.nextLine();
     }
@@ -63,12 +64,24 @@ public class GameLogic {
             char choice = scanner.next().charAt(0);
             if(String.valueOf(choice).equalsIgnoreCase("y")){
                 nameSet = true;
-                System.out.println("I am an example of a story. Nothing much but just to fill in shit.\n"
-                        + "Nevertheless, welcome! " + name); // remove me
+                System.out.println("Hi and welcome to text tales " + name + "!");
+                System.out.println("Join us in this journey of of adventure! Well then, let's start! \n");
+                enterAnythingToContinue();
             }
         }while (!nameSet);
     }
 
+    public static void encounter() {
+        int[] s = new int[3];
+//        BasicMobs.generateBasicMobs();
+
+        for(int i = 0; i < s.length; i++) {
+            if(s[i] == 1) {
+                System.out.println("You suddenly encountered a" + basicMobs + "in the northern mountains! You need to defeat it!");
+            }
+        }
+
+    }
     //WIP Save system
 
     //TODO: BattleSystem() -> desBOO
@@ -83,8 +96,9 @@ public class GameLogic {
      */
     public void gameRunning(){
         startScreen();
-        while (isGameRunning){
-
+        Story.intro();
+        Story.firstAdventure();
+        while (isGameRunning) {
 
             //If conditional is not final TODO: finish game conditions when battle system is done.
             if(storyChap >= 4){
