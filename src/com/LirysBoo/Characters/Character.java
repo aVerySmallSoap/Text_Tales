@@ -22,17 +22,14 @@ public class Character {
     public int getBaseAttack(){return this.baseAttack;}
     public int getBaseDefense(){return this.baseDefense;}
     public int getHP(){return this.HP;}
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public int Attack(){return Damage();}
 
     //Common Methods
     /**
      * Calculates the raw attack damage.
      * @return Raw attack damage
      */
-    public int Attack(){
+    public int attackCalculation(){
         float minDamage = (baseAttack * 1.25f) / baseAttack; // Base player damage is 5; 3.75 min(75%) : 5 max(100%)
         return ThreadLocalRandom.current().nextInt((int)minDamage, baseAttack);
     }
@@ -51,9 +48,9 @@ public class Character {
      */
     public int Damage() {
         float defense = Defense(); // Get defense value
-        int attack = Attack();  // Get attack value
+        int attack = attackCalculation();  // Get attack value
         float damageReduction = attack * defense;
-        return (int) (Attack() - damageReduction);
+        return (int) (attackCalculation() - damageReduction);
     }
 
     //TODO: skills

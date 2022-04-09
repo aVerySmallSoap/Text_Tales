@@ -1,17 +1,17 @@
 package com.LirysBoo.Logic;
 import com.LirysBoo.Characters.Player;
 import com.LirysBoo.Characters.mobs.BasicMobs;
-import java.util.Random;
+import static com.LirysBoo.Characters.mobs.BasicMobs.basicMobsList;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.Scanner;
 
 public class GameLogic {
-    public String name;
+    public static String name;
     public static final Scanner scanner = new Scanner(System.in);
     public static boolean isGameRunning = true;
     private final Player player = new Player(name);
     private final static BasicMobs basicMobs = new BasicMobs();
-    private final int storyChap = 0;
-    public static final Random rand = new Random();
+    public static int storyChap = 0;
 
     // Helper methods
 
@@ -64,24 +64,22 @@ public class GameLogic {
             char choice = scanner.next().charAt(0);
             if(String.valueOf(choice).equalsIgnoreCase("y")){
                 nameSet = true;
-                System.out.println("Hi and welcome to text tales " + name + "!");
-                System.out.println("Join us in this journey of of adventure! Well then, let's start! \n");
-                enterAnythingToContinue();
             }
         }while (!nameSet);
     }
 
     public static void encounter() {
-        int[] s = new int[3];
-//        BasicMobs.generateBasicMobs();
+        int listSize = basicMobsList.size();
+        int randNum = ThreadLocalRandom.current().nextInt(1, basicMobsList.size());
 
-        for(int i = 0; i < s.length; i++) {
-            if(s[i] == 1) {
-                System.out.println("You suddenly encountered a" + basicMobs + "in the northern mountains! You need to defeat it!");
+        for(int i = 0; i < listSize; i++) {
+            if(i == randNum) {
+                BasicMobs mob = basicMobsList.get(i);
+                System.out.println("You encountered a " + mob.getName() + " in the northern mountains! You need to defeat it!");
             }
         }
-
     }
+
     //WIP Save system
 
     //TODO: BattleSystem() -> desBOO
