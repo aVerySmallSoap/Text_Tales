@@ -29,8 +29,9 @@ public class UserActions {
 
     //Here is the logic where the Action of the user is derived from
     public void fightOrFlight(){
-        System.out.println("Will you fight or run away?\n"
-                +"1: Fight ; 2: Run");
+        System.out.println("""
+                 Will you fight or run away?
+                 1: Fight ; 2: Run""");
         int choice = userAction("->", 2);
         if(choice == 1){
             Fight();

@@ -1,7 +1,9 @@
 package com.LirysBoo.Characters;
 import com.LirysBoo.Logic.GameLogic;
-
+import static com.LirysBoo.Logic.GameLogic.mob;
 import java.util.concurrent.ThreadLocalRandom;
+
+
 
 public class Character {
     private String name;
@@ -26,6 +28,10 @@ public class Character {
     public int getHP(){return this.HP;}
     public int Attack(){return Damage();}
 
+    public void setHP(int damageDealt){
+        this.HP = HP - damageDealt;
+        }
+
     //Common Methods
     /**
      * Calculates the raw attack damage.
@@ -33,7 +39,7 @@ public class Character {
      */
     public int attackCalculation(){
         float minDamage = (baseAttack * 1.25f) / baseAttack; // Base player damage is 5; 3.75 min(75%) : 5 max(100%)
-        return ThreadLocalRandom.current().nextInt((int)minDamage, baseAttack);
+        return (int) (minDamage + (Math.random() * baseAttack));
     }
 
     /**
@@ -49,20 +55,23 @@ public class Character {
      * @return Reduced Damaged
      */
     public int Damage() {
-        float defense = Defense(); // Get defense value
-        int attack = attackCalculation();  // Get attack value
+        float defense = mob.Defense(); // Get defense value
+        int attack = this.attackCalculation();  // Get attack value
         float damageReduction = attack * defense;
-        return (int) (attackCalculation() - damageReduction);
+        var a = (int) (attackCalculation() - damageReduction);
+        System.out.println(this.getName() + " Dealt " + a);
+        return a;
     }
 
+    /**
+     * Generates the stats of an entity
+     */
     public void printStats(Character entity){
         GameLogic.header(entity.getName());
         System.out.println("HP: " + entity.getHP());
         System.out.println("Attack: " + entity.getBaseAttack());
         System.out.println("Defense: " + entity.getBaseDefense());
     }
-
-
 
     //TODO: skills
 }

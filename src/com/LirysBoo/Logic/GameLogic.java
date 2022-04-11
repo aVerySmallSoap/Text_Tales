@@ -2,13 +2,12 @@ package com.LirysBoo.Logic;
 import com.LirysBoo.Characters.Character;
 import com.LirysBoo.Characters.Player;
 import com.LirysBoo.Characters.mobs.BasicMobs;
-
 import static com.LirysBoo.Characters.mobs.BasicMobs.basicMobsList;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Scanner;
 
 public class GameLogic {
-    private final Player player = new Player(name);
+    private static Player player;
     private final static BasicMobs basicMobs = new BasicMobs();
     private static final UserActions userActions = new UserActions();
     private static final Scanner scanner = new Scanner(System.in);
@@ -63,6 +62,7 @@ public class GameLogic {
             name = scanner.next();
             System.out.println("Are you sure? Y/N");
             char choice = scanner.next().charAt(0);
+            player = new Player(name);
             if(String.valueOf(choice).equalsIgnoreCase("y")){
                 nameSet = true;
             }
@@ -85,10 +85,12 @@ public class GameLogic {
 
     //WIP Save system
 
-    //TODO: BattleSystem() -> desBOO
 
+    //made for testing purposes
     public static void battleSystem(){
         scrollingClear();
+        mob.printStats(mob);
+        mob.setHP(player.Attack());
         mob.printStats(mob);
     }
 
