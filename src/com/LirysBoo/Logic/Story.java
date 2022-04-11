@@ -1,6 +1,5 @@
 package com.LirysBoo.Logic;
 import static com.LirysBoo.Logic.GameLogic.enterAnythingToContinue;
-import static com.LirysBoo.Logic.GameLogic.name;
 import static com.LirysBoo.Logic.GameLogic.storyChap;
 
 public class Story {
@@ -22,6 +21,7 @@ public class Story {
 	public static void firstAdventure() {
 
 		GameLogic.scrollingClear();
+		GameLogic.header("Chapter One");
 		System.out.println("You started your journey into the northern mountains. It is said that a enchanted herb is found there.");
 		GameLogic.encounter();
 	}

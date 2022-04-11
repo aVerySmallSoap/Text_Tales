@@ -1,16 +1,20 @@
 package com.LirysBoo.Logic;
+import com.LirysBoo.Characters.Character;
 import com.LirysBoo.Characters.Player;
 import com.LirysBoo.Characters.mobs.BasicMobs;
+
 import static com.LirysBoo.Characters.mobs.BasicMobs.basicMobsList;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Scanner;
 
 public class GameLogic {
-    public static String name;
-    public static final Scanner scanner = new Scanner(System.in);
-    public static boolean isGameRunning = true;
     private final Player player = new Player(name);
     private final static BasicMobs basicMobs = new BasicMobs();
+    private static final UserActions userActions = new UserActions();
+    private static final Scanner scanner = new Scanner(System.in);
+    public static Character mob;
+    public static String name;
+    public static boolean isGameRunning = true;
     public static int storyChap = 0;
 
     // Helper methods
@@ -27,20 +31,17 @@ public class GameLogic {
         System.out.println("Enter any key to continue...");
         scanner.nextLine();
     }
-
-    //Custom toInt Scanner for user choices
-    public int userAction(String prompt, int userChoices){
-        int input;
-        do{
-            System.out.println(prompt);
-            try {
-                input = Integer.parseInt(scanner.next());
-            }catch (Exception e){
-                input = -1;
-                System.out.println("Invalid Action");
-            }
-        }while(input < 1 || input > userChoices); // Do-while check for inputs; should do more do-loops
-        return input;
+    //Title headers; Also servers as stoppers
+    public static void header(String title){
+        for (int i = 0; i < 25; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+        System.out.println(title);
+        for (int j = 0; j < 25; j++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 
     //Main feature methods
@@ -63,8 +64,6 @@ public class GameLogic {
             System.out.println("Are you sure? Y/N");
             char choice = scanner.next().charAt(0);
             if(String.valueOf(choice).equalsIgnoreCase("y")){
-                System.out.println("Hello! " + name + "!");
-                enterAnythingToContinue();
                 nameSet = true;
             }
         }while (!nameSet);
@@ -72,12 +71,14 @@ public class GameLogic {
 
     public static void encounter() {
         int listSize = basicMobsList.size();
-        int randNum = ThreadLocalRandom.current().nextInt(1, basicMobsList.size());
+        int randNum = ThreadLocalRandom.current().nextInt(0, listSize-1);
+
 
         for(int i = 0; i < listSize; i++) {
             if(i == randNum) {
-                BasicMobs mob = basicMobsList.get(i);
-                System.out.println("You encountered a " + mob.getName() + " in the northern mountains! You need to defeat it!");
+                mob = basicMobsList.get(i);
+                System.out.println("You encountered a " + mob.getName());
+                userActions.fightOrFlight();
             }
         }
     }
@@ -85,10 +86,11 @@ public class GameLogic {
     //WIP Save system
 
     //TODO: BattleSystem() -> desBOO
-    //private void battleSystem(){} finish me!
-    /*
-    if possible, include an Encounter() method to generate random encounters.
-     */
+
+    public static void battleSystem(){
+        scrollingClear();
+        mob.printStats(mob);
+    }
 
     /**
      * Main Game Logic

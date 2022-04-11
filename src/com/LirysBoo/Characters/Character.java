@@ -1,4 +1,6 @@
 package com.LirysBoo.Characters;
+import com.LirysBoo.Logic.GameLogic;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Character {
@@ -52,6 +54,15 @@ public class Character {
         float damageReduction = attack * defense;
         return (int) (attackCalculation() - damageReduction);
     }
+
+    public void printStats(Character entity){
+        GameLogic.header(entity.getName());
+        System.out.println("HP: " + entity.getHP());
+        System.out.println("Attack: " + entity.getBaseAttack());
+        System.out.println("Defense: " + entity.getBaseDefense());
+    }
+
+
 
     //TODO: skills
 }
