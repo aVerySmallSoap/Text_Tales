@@ -1,13 +1,11 @@
 package com.LirysBoo.Characters;
 import com.LirysBoo.Logic.GameLogic;
-import static com.LirysBoo.Logic.GameLogic.mob;
-import java.util.concurrent.ThreadLocalRandom;
 
-
+import static com.LirysBoo.Logic.GameLogic.*;
 
 public class Character {
     private String name;
-    private int HP, baseAttack,baseDefense;
+    private int HP, baseAttack,baseDefense, attack;
     //TODO: leveling system(exp, stats), shop(gold, items)
 
     //Allows us to create a blank Character object
@@ -26,11 +24,16 @@ public class Character {
     public int getBaseAttack(){return this.baseAttack;}
     public int getBaseDefense(){return this.baseDefense;}
     public int getHP(){return this.HP;}
-    public int Attack(){return Damage();}
+    public int getAttack(){return attack;}
 
-    public void setHP(int damageDealt){
+    public void setCurrentHP(int damageDealt){
+        if(this.HP == 0 || this.HP < 0 && attack > this.HP){
+            attack = this.HP;
+        }else{
         this.HP = HP - damageDealt;
         }
+    } // For damage being dealt
+    public void setHP(int HP){this.HP = HP;}
 
     //Common Methods
     /**
@@ -55,22 +58,32 @@ public class Character {
      * @return Reduced Damaged
      */
     public int Damage() {
-        float defense = mob.Defense(); // Get defense value
-        int attack = this.attackCalculation();  // Get attack value
+        float defense = Defense(); // Get defense value
+        attack = this.attackCalculation();  // Get attack value
         float damageReduction = attack * defense;
-        var a = (int) (attackCalculation() - damageReduction);
-        System.out.println(this.getName() + " Dealt " + a);
-        return a;
+        attack -= damageReduction;
+        return attack;
     }
+
+    public int Attack(){return Damage();}
 
     /**
      * Generates the stats of an entity
+     *
      */
     public void printStats(Character entity){
         GameLogic.header(entity.getName());
         System.out.println("HP: " + entity.getHP());
         System.out.println("Attack: " + entity.getBaseAttack());
         System.out.println("Defense: " + entity.getBaseDefense());
+    }
+
+    //TODO: Multiple Properties
+    public void heal(){
+        this.HP = getHP() + 25;
+        if(this.HP > 100){
+            this.HP = 100;
+        }
     }
 
     //TODO: skills

@@ -14,11 +14,12 @@ public class BasicMobs extends Character{
     }
 
     public static List<BasicMobs> basicMobsList = new ArrayList<>();
-    //Special Methods TODO: Special Methods for basic mobs
+    //Special Methods TODO: Special Methods for basic mobs.
+    //TODO: New Mob class structure and mob generation.
     public void generateBasicMobs(){
-        BasicMobs Goblin = new BasicMobs("Goblin",25, 25,2,0);
-        BasicMobs Troll = new BasicMobs("Troll",50, 50,1,2);
-        BasicMobs goblinWizard = new BasicMobs("Goblin Wizard",15, 15,5,0);
+        BasicMobs Goblin = new BasicMobs("Goblin",25, 25,5,0);
+        BasicMobs Troll = new BasicMobs("Troll",50, 50,10,2);
+        BasicMobs goblinWizard = new BasicMobs("Goblin Wizard",15, 12,15,0);
     }
 
 }

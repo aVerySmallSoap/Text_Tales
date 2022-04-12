@@ -7,13 +7,14 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.Scanner;
 
 public class GameLogic {
-    private static Player player;
     private final static BasicMobs basicMobs = new BasicMobs();
     private static final UserActions userActions = new UserActions();
     private static final Scanner scanner = new Scanner(System.in);
+    public static Player player;
     public static Character mob;
     public static String name;
     public static boolean isGameRunning = true;
+    public static boolean battle = true;
     public static int storyChap = 0;
 
     // Helper methods
@@ -30,6 +31,7 @@ public class GameLogic {
         System.out.println("Enter any key to continue...");
         scanner.nextLine();
     }
+
     //Title headers; Also servers as stoppers
     public static void header(String title){
         for (int i = 0; i < 25; i++) {
@@ -38,6 +40,14 @@ public class GameLogic {
         System.out.println();
         System.out.println(title);
         for (int j = 0; j < 25; j++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
+    public static void separator(int lineAmount){
+        System.out.println();
+        for (int i = 0; i < lineAmount; i++) {
             System.out.print("-");
         }
         System.out.println();
@@ -76,9 +86,9 @@ public class GameLogic {
 
         for(int i = 0; i < listSize; i++) {
             if(i == randNum) {
-                mob = basicMobsList.get(i);
+                mob = basicMobsList.get(i); // sets mob variable to a random mob in the arrayList basicMobList
                 System.out.println("You encountered a " + mob.getName());
-                userActions.fightOrFlight();
+                userActions.Actions();
             }
         }
     }
@@ -86,12 +96,30 @@ public class GameLogic {
     //WIP Save system
 
 
-    //made for testing purposes
+    //TODO: Fix re-occurring death print bug
     public static void battleSystem(){
         scrollingClear();
-        mob.printStats(mob);
-        mob.setHP(player.Attack());
-        mob.printStats(mob);
+        while(battle){
+            if(mob.getHP() == 0 || mob.getHP() < 0){
+                // win
+                System.out.println(mob.getName() + " is defeated");
+                storyChap++;
+                battle = false;
+                // proceed to next chapter
+            } else if (player.getHP() == 0 || player.getHP() < 0){
+                // lose
+                System.out.println("You're a loser");
+                battle = false;
+                isGameRunning = false;
+            }
+            mob.printStats(mob);
+            player.printStats(player);
+            separator(10);
+            System.out.println(mob.getName() + " dealt " + mob.getAttack());
+            System.out.println(player.getName() + " dealt " + player.getAttack());
+            separator(10);
+            userActions.Actions();
+        }
     }
 
     /**
@@ -99,20 +127,17 @@ public class GameLogic {
      *
      */
     public void gameRunning(){
-        startScreen();
-        Story.intro();
-        Story.firstAdventure();
-        while (isGameRunning) {
 
-            //If conditional is not final TODO: finish game conditions when battle system is done.
-            if(storyChap >= 4){
+        do{
+            startScreen(); // fix text skip bug
+            Story.intro();
+            Story.firstAdventure();
+
+            if(storyChap > 4){
                 System.out.println("You've won!");
                 isGameRunning = false;
-            } else if (player.getHP() == 0){
-                System.out.println("Try again loser.");
-                isGameRunning = false;
             }
-        }
+        }while (isGameRunning);
     }
 
 } //End
