@@ -1,7 +1,6 @@
 package com.LirysBoo.Logic;
 
 import java.util.Scanner;
-
 import static com.LirysBoo.Logic.GameLogic.*;
 
 public class UserActions {
@@ -34,13 +33,23 @@ public class UserActions {
         System.out.print("->");
         int choice = scanner.nextInt();
         if(choice == 1){
-        mob.setCurrentHP(player.Attack());
-        player.setCurrentHP(mob.Attack());
-        GameLogic.battleSystem();
+            mob.setCurrentHP(player.Attack());
+            player.setCurrentHP(mob.Attack());
+            if(mob.HP <= 0){
+                battleWon();
+                onGoingBattle = false;
+            }else if(player.HP <= 0){
+                gameOver();
+                onGoingBattle = false;
+            }else {
+                battleSystem();
+            }
         } else if(choice == 2){
             // check for potions (optional feature)
+            scrollingClear();
+            player.usedHeal = true;
             player.heal();
-        player.setCurrentHP(mob.Attack());
+            player.setCurrentHP(mob.Attack());
         } else if(choice == 3){
         Run();
         }

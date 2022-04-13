@@ -6,4 +6,5 @@ public class Player extends Character {
     }
 
     //TODO: Special properties
+    public boolean usedHeal = false;
 }

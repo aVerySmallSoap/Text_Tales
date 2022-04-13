@@ -14,7 +14,8 @@ public class BasicMobs extends Character{
     }
 
     public static List<BasicMobs> basicMobsList = new ArrayList<>();
-    //Special Methods TODO: Special Methods for basic mobs.
+    //Special Methods
+    //TODO: Special Methods for basic mobs.
     //TODO: New Mob class structure and mob generation.
     public void generateBasicMobs(){
         BasicMobs Goblin = new BasicMobs("Goblin",25, 25,5,0);
