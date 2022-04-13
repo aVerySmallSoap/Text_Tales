@@ -95,7 +95,7 @@ public class GameLogic {
         }
     }
 
-    //
+    //When the player has won a battle
     public static void battleWon(){
         header("Victory!");
         System.out.println(mob.getName() + " is defeated.");
@@ -105,10 +105,10 @@ public class GameLogic {
         storyChap++;
     }
 
-    //
-    public static void gameOver(){
+    //When the player has lost the battle(game)
+    public static void gameOver(String deathReason){
         header("Game Over!");
-        System.out.println("You Died.");
+        System.out.println(deathReason);
         isGameRunning = false;
     }
 

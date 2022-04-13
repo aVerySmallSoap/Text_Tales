@@ -39,7 +39,7 @@ public class UserActions {
                 battleWon();
                 onGoingBattle = false;
             }else if(player.HP <= 0){
-                gameOver();
+                gameOver("You died.");
                 onGoingBattle = false;
             }else {
                 battleSystem();
