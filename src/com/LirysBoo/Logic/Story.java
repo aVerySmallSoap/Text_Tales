@@ -22,7 +22,8 @@ public class Story {
 
 		GameLogic.scrollingClear();
 		GameLogic.header("Act 1 : Chapter 1");
-		System.out.println("You started your journey into the northern mountains. It is said that a enchanted herb is found there.");
+		System.out.println("You started your journey into the northern mountains. " +
+				"It is said that a enchanted herb is found there.");
 		GameLogic.encounter();
 	}
 

@@ -47,10 +47,10 @@ public class GameLogic {
 
     //Separator method to separate large text segments
     public static void separator(int lineAmount){
-        System.out.println();
         for (int i = 0; i < lineAmount; i++) {
             System.out.print("-");
         }
+        System.out.println();
     }
 
     //Main feature methods
@@ -59,10 +59,12 @@ public class GameLogic {
     //Start screen prompt
     public void startScreen(){
         boolean nameSet = false;
+        separator(10);
         System.out.println("""
                 Welcome to Text-Tales!
                 A simple text-based RPG-adventure game
                 Created by Lirys & Desiree""");
+        separator(10);
         enterAnythingToContinue();
         basicMobs.generateBasicMobs(); // initializes basicMobs
 
@@ -79,7 +81,7 @@ public class GameLogic {
         }while (!nameSet);
     }
 
-    // generate a random mob when an encounter happens
+    // Generates a random mob to battle the player
     public static void encounter() {
         int listSize = basicMobsList.size();
         int randNum = ThreadLocalRandom.current().nextInt(0, listSize-1);
@@ -148,6 +150,9 @@ public class GameLogic {
 
         do{
             startScreen(); // fix text skip bug
+            scrollingClear();
+            header("Blank");
+            enterAnythingToContinue();
             Story.intro();
             Story.actOne_ChapterOne();
             Story.actOne_ChapterOne();

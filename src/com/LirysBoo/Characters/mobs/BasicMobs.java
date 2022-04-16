@@ -18,9 +18,10 @@ public class BasicMobs extends Character{
     //TODO: Special Methods for basic mobs.
     //TODO: New Mob class structure and mob generation.
     public void generateBasicMobs(){
-        BasicMobs Goblin = new BasicMobs("Goblin",25, 25,5,0);
-        BasicMobs Troll = new BasicMobs("Troll",50, 50,10,2);
-        BasicMobs goblinWizard = new BasicMobs("Goblin Wizard",15, 12,15,0);
+        BasicMobs Goblin = new BasicMobs("Goblin",25, 25,5,5);
+        BasicMobs Troll = new BasicMobs("Troll",30, 30,7,10);
+        BasicMobs goblinWizard = new BasicMobs("Goblin Wizard",15, 15,12,0);
+        BasicMobs holderEntity = new BasicMobs("test_VOID",0,0,0,0);
     }
 
 }

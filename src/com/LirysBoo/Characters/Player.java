@@ -2,7 +2,7 @@ package com.LirysBoo.Characters;
 
 public class Player extends Character {
     public Player(String name){
-        super(name, 100, 100, 5, 0);
+        super(name, 100, 100, 7, 10);
     }
 
     //TODO: Special properties

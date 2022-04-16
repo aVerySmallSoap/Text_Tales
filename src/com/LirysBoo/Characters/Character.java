@@ -1,6 +1,11 @@
 package com.LirysBoo.Characters;
 import com.LirysBoo.Logic.GameLogic;
 
+import java.util.concurrent.ThreadLocalRandom;
+
+import static com.LirysBoo.Logic.GameLogic.mob;
+import static com.LirysBoo.Logic.GameLogic.player;
+
 public class Character {
     private String name;
     public int HP, baseMaxHP;
@@ -52,10 +57,16 @@ public class Character {
      */
     public int Attack() {
         float minDamage = this.baseAttack * 0.75f; // Base player damage is 5; 3.75 min(75%) : 5 max(100%)
-        double variedDamage = minDamage + (Math.random() * this.baseAttack);
-        float defense = Defense(); //TODO: Fix on how to get the enemies defense value
-        double defenseDamageReduction = variedDamage * defense;
-        attack = (int) (variedDamage - defenseDamageReduction);
+        double variedDamage = ThreadLocalRandom.current().nextDouble(minDamage, this.baseAttack+1);
+        if (this == player){
+            float defense = mob.Defense();
+            double defenseDamageReduction = variedDamage * defense;
+            attack = (int) (variedDamage - defenseDamageReduction);
+        }else if (this == mob){
+            float defense = player.Defense();
+            double defenseDamageReduction = variedDamage * defense;
+            attack = (int) (variedDamage - defenseDamageReduction);
+        }
         return attack;
     }
 
