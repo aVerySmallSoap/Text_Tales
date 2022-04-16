@@ -84,7 +84,7 @@ public class GameLogic {
     // Generates a random mob to battle the player
     public static void encounter() {
         int listSize = basicMobsList.size();
-        int randNum = ThreadLocalRandom.current().nextInt(0, listSize-1);
+        int randNum = ThreadLocalRandom.current().nextInt(0, listSize);
         onGoingBattle = true; // resets the battleSystem
 
 
