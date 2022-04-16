@@ -8,7 +8,6 @@ import static com.LirysBoo.Logic.GameLogic.*;
 public class UserActions {
     private final Scanner scanner = new Scanner(System.in);
 
-
     //Custom toInt Scanner for user choices
     public int userChoices(String prompt, int userChoices){
         int input;
