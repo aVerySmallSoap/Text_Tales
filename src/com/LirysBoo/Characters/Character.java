@@ -24,7 +24,10 @@ public class Character {
         this.baseDefense = baseDefense;
     }
 
-    // Getters & Setters
+    /**
+     * Getters and Setters methods. <br></br>
+     * Every single get and set methods are written below.
+     */
     public String getName(){return this.name;}
     public int getBaseAttack(){return this.baseAttack;}
     public int getBaseDefense(){return this.baseDefense;}
@@ -38,7 +41,7 @@ public class Character {
         }else{
             this.HP = HP - damageDealt;
         }
-    } // For damage being dealt
+    } // For damage being dealt //TODO: Better damage setting
     public void setHP(int HP){this.HP = HP;}
 
     //Common Methods
@@ -53,7 +56,7 @@ public class Character {
 
     /**
      * Calculates the total damage dealt with defense reductions
-     * @return Attack (after damage reductions)
+     * @return Attack
      */
     public int Attack() {
         float minDamage = this.baseAttack * 0.75f; // Base player damage is 5; 3.75 min(75%) : 5 max(100%)
@@ -71,7 +74,7 @@ public class Character {
     }
 
     /**
-     * Generates the stats of an entity
+     * Prints the stats of an entity
      *
      */
     public void printStats(Character entity){
@@ -81,7 +84,13 @@ public class Character {
         System.out.println("Defense: " + entity.getBaseDefense());
     }
 
-    //TODO: Multiple Properties
+    //TODO: Multiple Properties.
+    /*
+    In the characters class, every instance has access to these common properties.
+    These properties may include, healing, critical hits, etc.
+    */
+
+    // Healing for all Character types
     public void heal(){
         this.HP = getHP() + 25;
         if(this.HP > 100){
@@ -89,6 +98,13 @@ public class Character {
         }
     }
 
+    // Critical chance for all Character types
+    // public void crit(){}
+
     //TODO: skills
+    /*
+    in the characters class, every instance has access to these common skills.
+    These skills may include, burst, critical_swing, etc.
+    */
 }
 
