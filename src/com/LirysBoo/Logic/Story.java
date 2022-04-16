@@ -18,10 +18,10 @@ public class Story {
 		storyChap++;
 	}
 	
-	public static void firstAdventure() {
+	public static void actOne_ChapterOne() {
 
 		GameLogic.scrollingClear();
-		GameLogic.header("Chapter One");
+		GameLogic.header("Act 1 : Chapter 1");
 		System.out.println("You started your journey into the northern mountains. It is said that a enchanted herb is found there.");
 		GameLogic.encounter();
 	}

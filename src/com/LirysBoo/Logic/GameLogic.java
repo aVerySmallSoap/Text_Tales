@@ -45,12 +45,12 @@ public class GameLogic {
         System.out.println();
     }
 
+    //Separator method to separate large text segments
     public static void separator(int lineAmount){
         System.out.println();
         for (int i = 0; i < lineAmount; i++) {
             System.out.print("-");
         }
-        System.out.println();
     }
 
     //Main feature methods
@@ -90,7 +90,7 @@ public class GameLogic {
             if(i == randNum) {
                 mob = basicMobsList.get(i); // sets mob variable to a random mob in the arrayList basicMobList
                 System.out.println("You encountered a " + mob.getName());
-                userActions.Actions();
+                userActions.fightOrFlight();
             }
         }
     }
@@ -113,6 +113,7 @@ public class GameLogic {
     }
 
     //WIP Save system
+    //TODO: Save system
 
 
     //Battle system
@@ -123,12 +124,16 @@ public class GameLogic {
             player.printStats(player);
             separator(10);
             if(player.usedHeal){
+                System.out.println("Battle log");
+                separator(5);
                 System.out.println(player.getName() + " healed for 25");
-                System.out.println(mob.getName() + " dealt " + mob.getAttack());
+                System.out.println(mob.getName() + " dealt " + mob.getAttack() + " to " + player.getName());
                 player.usedHeal = false;
             }else{
-                System.out.println(mob.getName() + " dealt " + mob.getAttack());
-                System.out.println(player.getName() + " dealt " + player.getAttack());
+                System.out.println("Battle log");
+                separator(5);
+                System.out.println(mob.getName() + " dealt " + mob.getAttack() + " to " + player.getName());
+                System.out.println(player.getName() + " dealt " + player.getAttack() + " to " + mob.getName());
             }
             separator(10);
             userActions.Actions();
@@ -144,8 +149,8 @@ public class GameLogic {
         do{
             startScreen(); // fix text skip bug
             Story.intro();
-            Story.firstAdventure();
-            Story.firstAdventure();
+            Story.actOne_ChapterOne();
+            Story.actOne_ChapterOne();
 
             if(storyChap > 4){
                 System.out.println("You've won!");

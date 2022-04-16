@@ -1,6 +1,8 @@
 package com.LirysBoo.Logic;
 
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
+
 import static com.LirysBoo.Logic.GameLogic.*;
 
 public class UserActions {
@@ -71,7 +73,13 @@ public class UserActions {
 
 
     private void Run(){
-
+    int a = ThreadLocalRandom.current().nextInt(1,10);
+    if( a <= 3){
+        System.out.println("You ran away");
+    } else {
+        System.out.println("You failed to run");
+        Actions();
+    }
     }
 
 }

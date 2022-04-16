@@ -48,13 +48,13 @@ public class Character {
 
     /**
      * Calculates the total damage dealt with defense reductions
-     * @return Reduced Damaged
+     * @return Attack (after damage reductions)
      */
     public int Attack() {
         float minDamage = this.baseAttack * 0.75f; // Base player damage is 5; 3.75 min(75%) : 5 max(100%)
-        int variedDamage = (int) (minDamage + (Math.random() * this.baseAttack));
+        double variedDamage = minDamage + (Math.random() * this.baseAttack);
         float defense = Defense(); //TODO: Fix on how to get the enemies defense value
-        float defenseDamageReduction = variedDamage * defense;
+        double defenseDamageReduction = variedDamage * defense;
         attack = (int) (variedDamage - defenseDamageReduction);
         return attack;
     }
