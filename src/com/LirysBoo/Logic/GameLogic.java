@@ -2,20 +2,24 @@ package com.LirysBoo.Logic;
 import com.LirysBoo.Characters.Character;
 import com.LirysBoo.Characters.Player;
 import com.LirysBoo.Characters.mobs.BasicMobs;
+import com.LirysBoo.Story.Acts.ActOne;
+import com.LirysBoo.Story.Acts.ActTwo;
+import com.LirysBoo.Story.Story;
 import static com.LirysBoo.Characters.mobs.BasicMobs.basicMobsList;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Scanner;
 
-public class GameLogic {
+public class GameLogic implements Story {
     private static final BasicMobs basicMobs = new BasicMobs();
     private static final UserActions userActions = new UserActions();
     private static final Scanner scanner = new Scanner(System.in);
+    private static final ActOne ActOne = new ActOne();
+    private static final ActTwo ActTwo = new ActTwo();
     public static Player player;
     public static Character mob;
     public static String name;
-    public static boolean isGameRunning = true;
-    public static boolean onGoingBattle = true;
-    public static int storyChap = 0;
+    public static boolean isGameRunning = true, onGoingBattle = true;
+    public static int storyChap = 0, storyACT = 1;
 
     // Helper methods
 
@@ -33,7 +37,7 @@ public class GameLogic {
     }
 
     //Title headers; Also servers as stoppers
-    public static void header(String title){
+    public static void Header(String title){
         for (int i = 0; i < 25; i++) {
             System.out.print("-");
         }
@@ -46,11 +50,25 @@ public class GameLogic {
     }
 
     //Separator method to separate large text segments
-    public static void separator(int lineAmount){
+    public static void Separator(int lineAmount){
         for (int i = 0; i < lineAmount; i++) {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    //Spacer method to separate texts with white spaces
+    public static void Spacer(int Amount){
+        for (int i = 0; i < Amount; i++) {
+            System.out.println();
+        }
+    }
+
+    //Skipper method; Skips the enterAnyThingToContinue text bug
+    private void Skipper(){
+        scrollingClear();
+        Header("Blank");
+        enterAnythingToContinue();
     }
 
     //Main feature methods
@@ -59,12 +77,12 @@ public class GameLogic {
     //Start screen prompt
     public void startScreen(){
         boolean nameSet = false;
-        separator(10);
+        Separator(10);
         System.out.println("""
                 Welcome to Text-Tales!
                 A simple text-based RPG-adventure game
                 Created by Lirys & Desiree""");
-        separator(10);
+        Separator(10);
         enterAnythingToContinue();
         basicMobs.generateBasicMobs(); // initializes basicMobs
 
@@ -99,17 +117,20 @@ public class GameLogic {
 
     //When the player has won a battle
     public static void battleWon(){
-        header("Victory!");
+        Header("Victory!");
         System.out.println(mob.getName() + " is defeated.");
-        separator(20);
+        Separator(20);
         mob.setHP(mob.getBaseMaxHP());
-        enterAnythingToContinue();
         storyChap++;
+        if (storyChap == 6){
+            storyChap = 0;
+        }
+        enterAnythingToContinue();
     }
 
     //When the player has lost the battle(game)
     public static void gameOver(String deathReason){
-        header("Game Over!");
+        Header("Game Over!");
         System.out.println(deathReason);
         isGameRunning = false;
     }
@@ -124,20 +145,20 @@ public class GameLogic {
         while(onGoingBattle){
             mob.printStats(mob);
             player.printStats(player);
-            separator(10);
+            Separator(10);
             if(player.usedHeal){
                 System.out.println("Battle log");
-                separator(5);
+                Separator(5);
                 System.out.println(player.getName() + " healed for 25");
                 System.out.println(mob.getName() + " dealt " + mob.getAttack() + " to " + player.getName());
                 player.usedHeal = false;
             }else{
                 System.out.println("Battle log");
-                separator(5);
+                Separator(5);
                 System.out.println(mob.getName() + " dealt " + mob.getAttack() + " to " + player.getName());
                 System.out.println(player.getName() + " dealt " + player.getAttack() + " to " + mob.getName());
             }
-            separator(10);
+            Separator(10);
             userActions.Actions();
         }
     }
@@ -150,14 +171,15 @@ public class GameLogic {
 
         do{
             startScreen(); // fix text skip bug
-            scrollingClear();
-            header("Blank");
-            enterAnythingToContinue();
-            Story.intro();
-            Story.actOne_ChapterOne();
-            Story.actOne_ChapterOne();
+            Skipper();
+            while(ActOne.isOnACTOne){
+                ActOne.getChapter(storyChap);
+            }
+            while(ActTwo.isOnACTTwo){
+                ActTwo.getChapter(storyChap);
+            }
 
-            if(storyChap > 4){
+            if(storyACT >= 3){
                 System.out.println("You've won!");
                 isGameRunning = false;
             }

@@ -25,6 +25,7 @@ public class UserActions {
 
     // Try for final fantasy style choice system
     public void Actions(){
+        Spacer(3);
         System.out.println("""
                 What will you do?
                 1. Attack
@@ -37,9 +38,17 @@ public class UserActions {
             mob.setCurrentHP(player.Attack());
             player.setCurrentHP(mob.Attack());
             if(mob.HP <= 0){
+                mob.setHP(0);
+                scrollingClear();
+                mob.printStats(mob);
+                player.printStats(player);
                 battleWon();
                 onGoingBattle = false;
             }else if(player.HP <= 0){
+                player.setHP(0);
+                scrollingClear();
+                mob.printStats(mob);
+                player.printStats(player);
                 gameOver("You died.");
                 onGoingBattle = false;
             }else {
@@ -58,6 +67,7 @@ public class UserActions {
 
     //Here is the logic where the Action of the user is derived from
     public void fightOrFlight(){
+        Spacer(2);
         System.out.println("""
                  Will you fight or run away?
                  1: Fight

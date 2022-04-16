@@ -34,7 +34,7 @@ public class Character {
     public int getAttack(){return attack;}
 
     public void setCurrentHP(int damageDealt){
-        if(this.HP <= 0 && damageDealt > this.HP){
+        if(this.HP <= 0){
             this.HP = 0;
         }else{
             this.HP = HP - damageDealt;
@@ -76,7 +76,7 @@ public class Character {
      *
      */
     public void printStats(Character entity){
-        GameLogic.header(entity.getName());
+        GameLogic.Header(entity.getName());
         System.out.println("HP: " + entity.getHP());
         System.out.println("Attack: " + entity.getBaseAttack());
         System.out.println("Defense: " + entity.getBaseDefense());
