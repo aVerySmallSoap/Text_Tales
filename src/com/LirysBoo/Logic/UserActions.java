@@ -55,8 +55,7 @@ public class UserActions {
                 2. Heal
                 3. Run
                 """);
-        System.out.print("->");
-        int choice = scanner.nextInt();
+        int choice = userChoices("->", 3);
         if(choice == 1){
             mob.setCurrentHP(player.getAttack());
             player.setCurrentHP(mob.getAttack());
@@ -73,6 +72,7 @@ public class UserActions {
                 mob.getStats();
                 player.getStats();
                 gameOver("You died.");
+                isGameRunning = false;
                 onGoingBattle = false;
             }else {
                 battleSystem();

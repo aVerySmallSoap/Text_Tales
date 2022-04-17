@@ -1,4 +1,5 @@
 package com.LirysBoo.Story;
+@SuppressWarnings("unused")
 public interface Story {
 
 	// Introduction Method

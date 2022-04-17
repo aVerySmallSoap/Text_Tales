@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import static com.LirysBoo.Logic.GameLogic.mob;
 import static com.LirysBoo.Logic.GameLogic.player;
 
-public class Character {
+public abstract class Character {
     private String name;
     private int HP, baseMaxHP;
     private int baseAttack,baseDefense, attack;
@@ -16,8 +16,8 @@ public class Character {
 
     public Character(String name, int baseMaxHP, int HP, int baseAttack, int baseDefense){
         this.name = name;
-        this.baseMaxHP = baseMaxHP;
         this.HP = baseMaxHP;
+        this.baseMaxHP = HP; // redundant
         this.baseAttack = baseAttack;
         this.baseDefense = baseDefense;
     }
@@ -35,14 +35,14 @@ public class Character {
     public int getHP(){return this.HP;}
     public void getStats(){printStats(this);}
 
+    public void setHP(int HP){this.HP = HP;}
     public void setCurrentHP(int damageDealt){
         if(this.HP <= 0){
             this.HP = 0;
         }else{
             this.HP = HP - damageDealt;
         }
-    } // For damage being dealt //TODO: Better damage setting
-    public void setHP(int HP){this.HP = HP;}
+    }
 
     //Common Methods
 

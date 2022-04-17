@@ -37,13 +37,15 @@ public class ActOne implements Story {
         GameLogic.Header("Act 1 : Chapter 1");
         System.out.println("You started your journey into the northern mountains. " +
                 "It is said that a enchanted herb is found there.");
+        enterAnythingToContinue();
         GameLogic.encounter();
     }
-    //Extend the story please thank youuu :D
+    //Extend the story please thank you :D
     void ChapterTwo(){
         GameLogic.scrollingClear();
         GameLogic.Header("Act 1 : Chapter 2");
         System.out.println("Test 2");
+        enterAnythingToContinue();
         GameLogic.encounter();
     }
 
@@ -51,6 +53,7 @@ public class ActOne implements Story {
         GameLogic.scrollingClear();
         GameLogic.Header("Act 1 : Chapter 3");
         System.out.println("Test 3");
+        enterAnythingToContinue();
         GameLogic.encounter();
     }
 
@@ -58,6 +61,7 @@ public class ActOne implements Story {
         GameLogic.scrollingClear();
         GameLogic.Header("Act 1 : Chapter 4");
         System.out.println("Test 4");
+        enterAnythingToContinue();
         GameLogic.encounter();
     }
 
@@ -65,7 +69,9 @@ public class ActOne implements Story {
         GameLogic.scrollingClear();
         GameLogic.Header("Act 1 : Outro");
         System.out.println("Test 4");
+        enterAnythingToContinue();
         isOnACTOne = false;
+        storyChap = 0;
         storyACT++;   
     }
 }

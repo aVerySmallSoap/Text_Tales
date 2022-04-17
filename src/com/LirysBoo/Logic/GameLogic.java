@@ -1,16 +1,17 @@
 package com.LirysBoo.Logic;
+import static com.LirysBoo.Characters.mobs.BasicMobs.basicMobsList;
+import static com.LirysBoo.Characters.mobs.IntermediateMobs.intermediateMobsList;
 import com.LirysBoo.Characters.Character;
 import com.LirysBoo.Characters.Player;
 import com.LirysBoo.Characters.mobs.BasicMobs;
+import com.LirysBoo.Characters.mobs.IntermediateMobs;
 import com.LirysBoo.Story.Acts.ActOne;
 import com.LirysBoo.Story.Acts.ActTwo;
 import com.LirysBoo.Story.Story;
-import static com.LirysBoo.Characters.mobs.BasicMobs.basicMobsList;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Scanner;
 
 public class GameLogic implements Story {
-    private static final BasicMobs basicMobs = new BasicMobs();
     private static final UserActions userActions = new UserActions();
     private static final Scanner scanner = new Scanner(System.in);
     private static final ActOne ActOne = new ActOne();
@@ -84,7 +85,8 @@ public class GameLogic implements Story {
                 Created by Lirys & Desiree""");
         Separator(10);
         enterAnythingToContinue();
-        basicMobs.generateBasicMobs(); // initializes basicMobs
+        BasicMobs.generateMobs();
+        IntermediateMobs.generateMobs();
 
         do{
             scrollingClear();
@@ -101,19 +103,30 @@ public class GameLogic implements Story {
 
     // Generates a random mob to battle the player
     public static void encounter() {
-        int listSize = basicMobsList.size();
-        int randNum = ThreadLocalRandom.current().nextInt(0, listSize);
-        onGoingBattle = true; // resets the battleSystem
-
-
-        for(int i = 0; i < listSize; i++) {
-            if(i == randNum) {
-                mob = basicMobsList.get(i); // sets mob variable to a random mob in the arrayList basicMobList
-                System.out.println("You encountered a " + mob.getName());
-                userActions.fightOrFlight();
+        int lowListSize = basicMobsList.size(), midListSize = intermediateMobsList.size(), randNum;
+        if (storyACT == 1){
+            randNum = ThreadLocalRandom.current().nextInt(0, lowListSize);
+            onGoingBattle = true;
+            for(int i = 0; i < lowListSize; i++) {
+                if(i == randNum) {
+                    mob = basicMobsList.get(i); // sets mob variable to a random mob in the arrayList basicMobList
+                    System.out.println("You encountered a " + mob.getName());
+                    userActions.fightOrFlight();
+                }
             }
-        }
+        }else if(storyACT == 2) {
+            randNum = ThreadLocalRandom.current().nextInt(0, midListSize);
+            onGoingBattle = true;
+                for(int i = 0; i < midListSize; i++) {
+                    if(i == randNum) {
+                        mob = intermediateMobsList.get(i); // sets mob variable to a random mob in the arrayList basicMobList
+                        System.out.println("You encountered a " + mob.getName());
+                        userActions.fightOrFlight();
+                    }
+                }
+            }
     }
+
 
     //When the player has won a battle
     public static void battleWon(){
@@ -122,9 +135,6 @@ public class GameLogic implements Story {
         Separator(20);
         mob.setHP(mob.getBaseMaxHP());
         storyChap++;
-        if (storyChap == 6){
-            storyChap = 0;
-        }
         enterAnythingToContinue();
     }
 
@@ -132,7 +142,7 @@ public class GameLogic implements Story {
     public static void gameOver(String deathReason){
         Header("Game Over!");
         System.out.println(deathReason);
-        isGameRunning = false;
+        ActOne.isOnACTOne = false; ActTwo.isOnACTTwo = false; //TODO: If possible, optimize this line
     }
 
     //WIP Save system
@@ -168,9 +178,8 @@ public class GameLogic implements Story {
      *
      */
     public void gameRunning(){
-
-        do{
-            startScreen(); // fix text skip bug
+        while (isGameRunning){
+            startScreen();
             Skipper();
             while(ActOne.isOnACTOne){
                 ActOne.getChapter(storyChap);
@@ -183,7 +192,7 @@ public class GameLogic implements Story {
                 System.out.println("You've won!");
                 isGameRunning = false;
             }
-        }while (isGameRunning);
+        }
     }
 
 } //End

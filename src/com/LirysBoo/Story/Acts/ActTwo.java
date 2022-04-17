@@ -24,20 +24,18 @@ public class ActTwo implements Story {
         GameLogic.scrollingClear();
 
         System.out.println("""
-				Your little brother had caught a disease that rarely appears. The doctors said that the disease can be cured and so were relieved.
-				But they said the cure can only be obtained by getting a certain herb in the northern mountains.
-				A glowing fruit in a the west forest and a branch of a tree that only exists within a dungeon.
-				Upon hearing that, you set your mind to start your journey but there are dangerous creatures roaming around your country.
-				Your brother tried to stop you but you were determined to go for your beloved brother.""");
+				Time for the second act.
+				Where people die alone in this road of unforeseen dangers""");
         enterAnythingToContinue();
         storyChap++;
     }
-    //Extend the story please thank youuu :D
+    //Extend the story please thank you :D
     void ChapterOne(){
         GameLogic.scrollingClear();
         GameLogic.Header("Act 2 : Chapter 1");
         System.out.println("You started your journey into the northern mountains. " +
                 "It is said that a enchanted herb is found there.");
+        enterAnythingToContinue();
         GameLogic.encounter();
     }
 
@@ -45,6 +43,7 @@ public class ActTwo implements Story {
         GameLogic.scrollingClear();
         GameLogic.Header("Act 2 : Chapter 2");
         System.out.println("Test 2");
+        enterAnythingToContinue();
         GameLogic.encounter();
     }
 
@@ -52,6 +51,7 @@ public class ActTwo implements Story {
         GameLogic.scrollingClear();
         GameLogic.Header("Act 2 : Chapter 3");
         System.out.println("Test 3");
+        enterAnythingToContinue();
         GameLogic.encounter();
     }
 
@@ -59,6 +59,7 @@ public class ActTwo implements Story {
         GameLogic.scrollingClear();
         GameLogic.Header("Act 2 : Chapter 4");
         System.out.println("Test 4");
+        enterAnythingToContinue();
         GameLogic.encounter();
     }
 
@@ -66,6 +67,7 @@ public class ActTwo implements Story {
         GameLogic.scrollingClear();
         GameLogic.Header("Act 2 : Ending");
         System.out.println("Test 4");
+        enterAnythingToContinue();
         isOnACTTwo = false;
         storyACT++;
     }

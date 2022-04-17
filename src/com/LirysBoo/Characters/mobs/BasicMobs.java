@@ -13,11 +13,13 @@ public class BasicMobs extends Character{
         basicMobsList.add(this);
     }
 
-    public static List<BasicMobs> basicMobsList = new ArrayList<>();
+    public static List<Character> basicMobsList = new ArrayList<>();
+
     //Special Methods
     //TODO: Special Methods for basic mobs.
     //TODO: New Mob class structure and mob generation.
-    public void generateBasicMobs(){
+    @SuppressWarnings("unused")
+    public static void generateMobs() {
         BasicMobs goblinGrunt = new BasicMobs(
                 "Goblin Grunt",
                 10,
@@ -57,6 +59,6 @@ public class BasicMobs extends Character{
                 30
         );
     }
-
 }
+
 
