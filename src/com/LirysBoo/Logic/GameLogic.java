@@ -150,13 +150,13 @@ public class GameLogic implements Story {
                 System.out.println("Battle log");
                 Separator(5);
                 System.out.println(player.getName() + " healed for 25");
-                System.out.println(mob.getName() + " dealt " + mob.Attack() + " to " + player.getName());
+                System.out.println(mob.getName() + " dealt " + mob.getAttack() + " to " + player.getName());
                 player.usedHeal = false;
             }else{
                 System.out.println("Battle log");
                 Separator(5);
-                System.out.println(mob.getName() + " dealt " + mob.Attack() + " to " + player.getName());
-                System.out.println(player.getName() + " dealt " + player.Attack() + " to " + mob.getName());
+                System.out.println(mob.getName() + " dealt " + mob.getAttack() + " to " + player.getName());
+                System.out.println(player.getName() + " dealt " + player.getAttack() + " to " + mob.getName());
             }
             Separator(10);
             userActions.Actions();

@@ -1,8 +1,6 @@
 package com.LirysBoo.Logic;
-
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
-
 import static com.LirysBoo.Logic.GameLogic.*;
 
 public class UserActions {
@@ -23,48 +21,6 @@ public class UserActions {
         return input;
     }
 
-    // Try for final fantasy style choice system
-    public void Actions(){
-        Spacer(3);
-        System.out.println("""
-                What will you do?
-                1. Attack
-                2. Heal
-                3. Run
-                """);
-        System.out.print("->");
-        int choice = scanner.nextInt();
-        if(choice == 1){
-            mob.setCurrentHP(player.Attack());
-            player.setCurrentHP(mob.Attack());
-            if(mob.HP <= 0){
-                mob.setHP(0);
-                scrollingClear();
-                mob.getStats();
-                player.getStats();
-                battleWon();
-                onGoingBattle = false;
-            }else if(player.HP <= 0){
-                player.setHP(0);
-                scrollingClear();
-                mob.getStats();
-                player.getStats();
-                gameOver("You died.");
-                onGoingBattle = false;
-            }else {
-                battleSystem();
-            }
-        } else if(choice == 2){
-            // check for potions (optional feature)
-            scrollingClear();
-            player.usedHeal = true;
-            player.heal();
-            player.setCurrentHP(mob.Attack());
-        } else if(choice == 3){
-        Run();
-        }
-    }
-
     //Here is the logic where the Action of the user is derived from
     public void fightOrFlight(){
         Spacer(2);
@@ -80,15 +36,57 @@ public class UserActions {
         }
     }
 
-
     private void Run(){
-    int a = ThreadLocalRandom.current().nextInt(1,10);
-    if( a <= 3){
-        System.out.println("You ran away");
-    } else {
-        System.out.println("You failed to run");
-        Actions();
+        int a = ThreadLocalRandom.current().nextInt(1,10);
+        if( a <= 3){
+            System.out.println("You ran away");
+        } else {
+            System.out.println("You failed to run");
+            Actions();
+        }
     }
+
+    // Try for final fantasy style choice system
+    public void Actions(){
+        Spacer(3);
+        System.out.println("""
+                What will you do?
+                1. Attack
+                2. Heal
+                3. Run
+                """);
+        System.out.print("->");
+        int choice = scanner.nextInt();
+        if(choice == 1){
+            mob.setCurrentHP(player.getAttack());
+            player.setCurrentHP(mob.getAttack());
+            if(mob.getHP() <= 0){
+                mob.setHP(0);
+                scrollingClear();
+                mob.getStats();
+                player.getStats();
+                battleWon();
+                onGoingBattle = false;
+            }else if(player.getHP() <= 0){
+                player.setHP(0);
+                scrollingClear();
+                mob.getStats();
+                player.getStats();
+                gameOver("You died.");
+                onGoingBattle = false;
+            }else {
+                battleSystem();
+            }
+        } else if(choice == 2){
+            // check for potions (optional feature)
+            scrollingClear();
+            player.usedHeal = true;
+            player.heal();
+            player.setCurrentHP(mob.getAttack());
+            battleSystem();
+        } else if(choice == 3){
+        Run();
+        }
     }
 
 }

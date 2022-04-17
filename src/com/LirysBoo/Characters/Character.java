@@ -6,7 +6,7 @@ import static com.LirysBoo.Logic.GameLogic.player;
 
 public class Character {
     private String name;
-    public int HP, baseMaxHP;
+    private int HP, baseMaxHP;
     private int baseAttack,baseDefense, attack;
     //TODO: leveling system(exp, stats), shop(gold, items)
 
@@ -28,10 +28,11 @@ public class Character {
      */
     public String getName(){return this.name;}
     public int getBaseAttack(){return this.baseAttack;}
+    public int getAttack(){return attackCalculation();}
     public int getBaseDefense(){return this.baseDefense;}
+    public float getDefense(){return this.Defense();}
     public int getBaseMaxHP(){return this.baseMaxHP;}
     public int getHP(){return this.HP;}
-    public int Attack(){return attackCalculation();}
     public void getStats(){printStats(this);}
 
     public void setCurrentHP(int damageDealt){
@@ -49,23 +50,23 @@ public class Character {
      * Defensive properties of type Character.
      * Percentage based reduction is used for a more balanced damage output.
      */
-    public float Defense(){
+    private float Defense(){
         return this.baseDefense / 100f; //% damage reduction; where 1 = 0.01%
     }
 
     /**
      * Calculates the total damage dealt with defense reductions
-     * @return Attack
+     * @return getAttack
      */
     private int attackCalculation() {
         float minDamage = this.baseAttack * 0.75f; // Base player damage is 5; 3.75 min(75%) : 5 max(100%)
         double variedDamage = ThreadLocalRandom.current().nextDouble(minDamage, this.baseAttack+1);
         if (this == player){
-            float defense = mob.Defense();
+            float defense = mob.getDefense();
             double defenseDamageReduction = variedDamage * defense;
             attack = (int) (variedDamage - defenseDamageReduction);
         }else if (this == mob){
-            float defense = player.Defense();
+            float defense = player.getDefense();
             double defenseDamageReduction = variedDamage * defense;
             attack = (int) (variedDamage - defenseDamageReduction);
         }
@@ -78,7 +79,7 @@ public class Character {
      */
     private void printStats(Character entity){
         GameLogic.Header(entity.getName());
-        System.out.println("HP: " + entity.getHP());
+        System.out.println("HP: " + entity.getHP() + "/" + entity.getBaseMaxHP());
         System.out.println("Attack: " + entity.getBaseAttack());
         System.out.println("Defense: " + entity.getBaseDefense());
     }
