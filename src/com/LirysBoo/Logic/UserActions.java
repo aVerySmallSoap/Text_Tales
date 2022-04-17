@@ -40,15 +40,15 @@ public class UserActions {
             if(mob.HP <= 0){
                 mob.setHP(0);
                 scrollingClear();
-                mob.printStats(mob);
-                player.printStats(player);
+                mob.getStats();
+                player.getStats();
                 battleWon();
                 onGoingBattle = false;
             }else if(player.HP <= 0){
                 player.setHP(0);
                 scrollingClear();
-                mob.printStats(mob);
-                player.printStats(player);
+                mob.getStats();
+                player.getStats();
                 gameOver("You died.");
                 onGoingBattle = false;
             }else {

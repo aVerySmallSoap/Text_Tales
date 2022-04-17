@@ -31,7 +31,8 @@ public class Character {
     public int getBaseDefense(){return this.baseDefense;}
     public int getBaseMaxHP(){return this.baseMaxHP;}
     public int getHP(){return this.HP;}
-    public int getAttack(){return attack;}
+    public int Attack(){return attackCalculation();}
+    public void getStats(){printStats(this);}
 
     public void setCurrentHP(int damageDealt){
         if(this.HP <= 0){
@@ -56,7 +57,7 @@ public class Character {
      * Calculates the total damage dealt with defense reductions
      * @return Attack
      */
-    public int Attack() {
+    private int attackCalculation() {
         float minDamage = this.baseAttack * 0.75f; // Base player damage is 5; 3.75 min(75%) : 5 max(100%)
         double variedDamage = ThreadLocalRandom.current().nextDouble(minDamage, this.baseAttack+1);
         if (this == player){
@@ -75,7 +76,7 @@ public class Character {
      * Prints the stats of an entity
      *
      */
-    public void printStats(Character entity){
+    private void printStats(Character entity){
         GameLogic.Header(entity.getName());
         System.out.println("HP: " + entity.getHP());
         System.out.println("Attack: " + entity.getBaseAttack());
