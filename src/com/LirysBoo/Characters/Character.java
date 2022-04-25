@@ -1,14 +1,14 @@
 package com.LirysBoo.Characters;
-import com.LirysBoo.Logic.GameLogic;
 import com.LirysBoo.Logic.Helper;
-
 import java.util.concurrent.ThreadLocalRandom;
 import static com.LirysBoo.Logic.GameLogic.mob;
 import static com.LirysBoo.Logic.GameLogic.player;
 
 public abstract class Character {
     private final String name;
+
     private final int baseMaxHP, baseAttack,baseDefense;
+
     private int HP, attack;
     //TODO: leveling system(exp, stats), shop(gold, items)
 
@@ -26,16 +26,25 @@ public abstract class Character {
      * Getters and Setters methods. <br></br>
      * Every single get and set methods are written below.
      */
+
     public String getName(){return this.name;}
+
     public int getBaseAttack(){return this.baseAttack;}
+
     public int getAttack(){return attackCalculation();}
+
     public int getBaseDefense(){return this.baseDefense;}
-    public float getDefense(){return this.Defense();}
+
     public int getBaseMaxHP(){return this.baseMaxHP;}
+
     public int getHP(){return this.HP;}
+
+    public float getDefense(){return this.Defense();}
+
     public void getStats(){printStats(this);}
 
     public void setHP(int HP){this.HP = HP;}
+
     public void setCurrentHP(int damageDealt){
         if(this.HP <= 0){
             this.HP = 0;

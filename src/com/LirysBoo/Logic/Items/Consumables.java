@@ -1,8 +1,11 @@
 package com.LirysBoo.Logic.Items;
 
 public class Consumables extends Items{
+
     private String itemName;
+
     private String ITEM_TAG;
+
     private int itemCount, itemID;
 
     public Consumables(){}
@@ -17,9 +20,13 @@ public class Consumables extends Items{
     }
 
     public int getItemCount() { return itemCount;}
+
     public int getItemID()  { return itemID;}
+
     public String getItemName() {return itemName;}
+
     public String getITEM_TAG() {return ITEM_TAG;}
+
     public void setItemCount(int Amount){this.itemCount = Amount;}
 
     // functions

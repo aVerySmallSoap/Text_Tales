@@ -14,16 +14,27 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.Scanner;
 
 public class GameLogic implements Story {
+
     private static final UserActions userActions = new UserActions();
+
     private static final ActOne ActOne = new ActOne();
+
     private static final ActTwo ActTwo = new ActTwo();
+
     public static final Scanner scanner = new Scanner(System.in);
+
     public static Helper helper;
+
     public static Consumables consumables;
+
     public static Player player;
+
     public static Character mob;
+
     public static String name;
+
     public static boolean isGameRunning = true, onGoingBattle = true;
+
     public static int storyChap = 0, storyACT = 1;
 
     //Main feature methods
@@ -42,7 +53,6 @@ public class GameLogic implements Story {
         BasicMobs.generateMobs();
         IntermediateMobs.generateMobs();
         consumables.init();
-
         do{
             Helper.scrollingClear();
             System.out.println("Enter your name: ");
