@@ -22,7 +22,7 @@ public class GameLogic{
 
     public static final Scanner scanner = new Scanner(System.in);
 
-    public static Consumables consumables;
+    public static Consumables consumables = new Consumables();
 
     public static Player player;
 

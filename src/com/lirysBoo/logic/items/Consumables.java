@@ -2,15 +2,18 @@ package com.lirysBoo.logic.items;
 
 public class Consumables extends Items{
 
-    private final String itemName;
+    private String itemName;
 
-    private final String ITEM_TAG;
+    private String ITEM_TAG;
 
     private int itemCount;
 
-    private final int itemID;
+    private int itemID;
 
     //Add consumables
+
+    public Consumables(){}
+
     public Consumables(String itemName, String itemTag, int itemID, int count){
         this.itemName = itemName;
         this.ITEM_TAG = itemTag;
