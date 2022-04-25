@@ -1,7 +1,7 @@
-package com.LirysBoo.Logic;
+package com.lirysBoo.logic;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
-import static com.LirysBoo.Logic.GameLogic.*;
+import static com.lirysBoo.logic.GameLogic.*;
 
 public class UserActions {
     private final Scanner scanner = new Scanner(System.in);

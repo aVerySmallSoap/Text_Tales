@@ -1,11 +1,10 @@
-package com.LirysBoo.Story.Acts;
-import com.LirysBoo.Logic.GameLogic;
-import com.LirysBoo.Logic.Helper;
-import com.LirysBoo.Story.Story;
+package com.lirysBoo.story.acts;
+import com.lirysBoo.logic.GameLogic;
+import com.lirysBoo.logic.Helper;
 
-import static com.LirysBoo.Logic.GameLogic.*;
+import static com.lirysBoo.logic.GameLogic.*;
 
-public class ActTwo implements Story {
+public class ActTwo {
 
     public boolean isOnACTTwo = true;
 
@@ -21,7 +20,7 @@ public class ActTwo implements Story {
         }
     }
 
-    void intro(){
+    public void intro(){
         Helper.scrollingClear();
 
         System.out.println("""
@@ -31,7 +30,7 @@ public class ActTwo implements Story {
         storyChap++;
     }
     //Extend the story please thank you :D
-    void ChapterOne(){
+    public void ChapterOne(){
         Helper.scrollingClear();
         Helper.Header("Act 2 : Chapter 1");
         System.out.println("You started your journey into the northern mountains. " +
@@ -40,7 +39,7 @@ public class ActTwo implements Story {
         GameLogic.encounter();
     }
 
-    void ChapterTwo(){
+    public void ChapterTwo(){
         Helper.scrollingClear();
         Helper.Header("Act 2 : Chapter 2");
         System.out.println("Test 2");
@@ -48,7 +47,7 @@ public class ActTwo implements Story {
         GameLogic.encounter();
     }
 
-    void ChapterThree(){
+    public void ChapterThree(){
         Helper.scrollingClear();
         Helper.Header("Act 2 : Chapter 3");
         System.out.println("Test 3");
@@ -56,7 +55,7 @@ public class ActTwo implements Story {
         GameLogic.encounter();
     }
 
-    void ChapterFour(){
+    public void ChapterFour(){
         Helper.scrollingClear();
         Helper.Header("Act 2 : Chapter 4");
         System.out.println("Test 4");
@@ -64,7 +63,7 @@ public class ActTwo implements Story {
         GameLogic.encounter();
     }
 
-    void Outro(){
+    public void Outro(){
         Helper.scrollingClear();
         Helper.Header("Act 2 : Ending");
         System.out.println("Test 4");

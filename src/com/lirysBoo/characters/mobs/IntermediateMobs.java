@@ -1,5 +1,5 @@
-package com.LirysBoo.Characters.mobs;
-import com.LirysBoo.Characters.Character;
+package com.lirysBoo.characters.mobs;
+import com.lirysBoo.characters.Character;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ public class IntermediateMobs extends Character {
         intermediateMobsList.add(this);
     }
 
-    public static ArrayList<Character> intermediateMobsList = new ArrayList<>();
+    public static final ArrayList<Character> intermediateMobsList = new ArrayList<>();
 
     @SuppressWarnings("unused")
     public static void generateMobs(){

@@ -1,5 +1,5 @@
-package com.LirysBoo.Logic;
-import static com.LirysBoo.Logic.GameLogic.scanner;
+package com.lirysBoo.logic;
+import static com.lirysBoo.logic.GameLogic.scanner;
 
 public class Helper {
     public static void scrollingClear(){

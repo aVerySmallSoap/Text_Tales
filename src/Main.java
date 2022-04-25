@@ -1,7 +1,7 @@
-import com.LirysBoo.Logic.GameLogic;
+import com.lirysBoo.logic.GameLogic;
 
 public class Main {
-    protected static GameLogic logic = new GameLogic();
+    protected static final GameLogic logic = new GameLogic();
 
     public static void main(String[] args) {
         logic.gameRunning();

@@ -1,5 +1,5 @@
-package com.LirysBoo.Characters.mobs;
-import com.LirysBoo.Characters.Character;
+package com.lirysBoo.characters.mobs;
+import com.lirysBoo.characters.Character;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +10,7 @@ public class BasicMobs extends Character{
         basicMobsList.add(this);
     }
 
-    public static List<Character> basicMobsList = new ArrayList<>();
+    public static final List<Character> basicMobsList = new ArrayList<>();
 
     //Special Methods
     //TODO: Special Methods for basic mobs.

@@ -1,16 +1,16 @@
-package com.LirysBoo.Logic.Items;
+package com.lirysBoo.logic.items;
 
 public class Consumables extends Items{
 
-    private String itemName;
+    private final String itemName;
 
-    private String ITEM_TAG;
+    private final String ITEM_TAG;
 
-    private int itemCount, itemID;
+    private int itemCount;
 
-    public Consumables(){}
+    private final int itemID;
+
     //Add consumables
-
     public Consumables(String itemName, String itemTag, int itemID, int count){
         this.itemName = itemName;
         this.ITEM_TAG = itemTag;
@@ -29,8 +29,6 @@ public class Consumables extends Items{
 
     public void setItemCount(int Amount){this.itemCount = Amount;}
 
-    // functions
-    public void consume(){}
     @SuppressWarnings("unused")
     public void init(){
         Consumables healthPot = new Consumables(

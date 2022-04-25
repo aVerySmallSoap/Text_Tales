@@ -1,10 +1,10 @@
-package com.LirysBoo.Story.Acts;
-import com.LirysBoo.Logic.GameLogic;
-import com.LirysBoo.Logic.Helper;
-import com.LirysBoo.Story.Story;
-import static com.LirysBoo.Logic.GameLogic.*;
+package com.lirysBoo.story.acts;
+import com.lirysBoo.logic.GameLogic;
+import com.lirysBoo.logic.Helper;
 
-public class ActOne implements Story {
+import static com.lirysBoo.logic.GameLogic.*;
+
+public class ActOne {
 
     public boolean isOnACTOne = true;
 
@@ -20,7 +20,7 @@ public class ActOne implements Story {
         }
     }
 
-    void intro(){
+    public void intro(){
         Helper.scrollingClear();
 
         System.out.println("""
@@ -34,7 +34,7 @@ public class ActOne implements Story {
         storyChap++;
     }
 
-    void ChapterOne(){
+    public void ChapterOne(){
         Helper.scrollingClear();
         Helper.Header("Act 1 : Chapter 1");
         System.out.println("""
@@ -47,7 +47,7 @@ public class ActOne implements Story {
         GameLogic.encounter();
     }
     //Extend the story please thank you :D
-    void ChapterTwo(){
+    public void ChapterTwo(){
         Helper.scrollingClear();
         Helper.Header("Act 1 : Chapter 2");
         System.out.println("Test 2");
@@ -55,7 +55,7 @@ public class ActOne implements Story {
         GameLogic.encounter();
     }
 
-    void ChapterThree(){
+    public void ChapterThree(){
         Helper.scrollingClear();
         Helper.Header("Act 1 : Chapter 3");
         System.out.println("Test 3");
@@ -63,7 +63,7 @@ public class ActOne implements Story {
         GameLogic.encounter();
     }
 
-    void ChapterFour(){
+    public void ChapterFour(){
         Helper.scrollingClear();
         Helper.Header("Act 1 : Chapter 4");
         System.out.println("Test 4");
@@ -71,7 +71,7 @@ public class ActOne implements Story {
         GameLogic.encounter();
     }
 
-    void Outro(){
+    public void Outro(){
         Helper.scrollingClear();
         Helper.Header("Act 1 : Outro");
         System.out.println("Test 4");

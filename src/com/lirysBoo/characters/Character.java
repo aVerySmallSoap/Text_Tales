@@ -1,8 +1,8 @@
-package com.LirysBoo.Characters;
-import com.LirysBoo.Logic.Helper;
+package com.lirysBoo.characters;
+import com.lirysBoo.logic.Helper;
 import java.util.concurrent.ThreadLocalRandom;
-import static com.LirysBoo.Logic.GameLogic.mob;
-import static com.LirysBoo.Logic.GameLogic.player;
+import static com.lirysBoo.logic.GameLogic.mob;
+import static com.lirysBoo.logic.GameLogic.player;
 
 public abstract class Character {
     private final String name;

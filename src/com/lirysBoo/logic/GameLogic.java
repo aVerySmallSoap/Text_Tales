@@ -1,19 +1,18 @@
-package com.LirysBoo.Logic;
-import static com.LirysBoo.Characters.mobs.BasicMobs.basicMobsList;
-import static com.LirysBoo.Characters.mobs.IntermediateMobs.intermediateMobsList;
-import com.LirysBoo.Characters.Character;
-import com.LirysBoo.Characters.Player;
-import com.LirysBoo.Characters.mobs.BasicMobs;
-import com.LirysBoo.Characters.mobs.IntermediateMobs;
-import com.LirysBoo.Logic.Items.Consumables;
-import com.LirysBoo.Story.Acts.ActOne;
-import com.LirysBoo.Story.Acts.ActTwo;
-import com.LirysBoo.Story.Story;
+package com.lirysBoo.logic;
+import static com.lirysBoo.characters.mobs.BasicMobs.basicMobsList;
+import static com.lirysBoo.characters.mobs.IntermediateMobs.intermediateMobsList;
+import com.lirysBoo.characters.Character;
+import com.lirysBoo.characters.Player;
+import com.lirysBoo.characters.mobs.BasicMobs;
+import com.lirysBoo.characters.mobs.IntermediateMobs;
+import com.lirysBoo.logic.items.Consumables;
+import com.lirysBoo.story.acts.ActOne;
+import com.lirysBoo.story.acts.ActTwo;
 import javax.swing.JOptionPane;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Scanner;
 
-public class GameLogic implements Story {
+public class GameLogic{
 
     private static final UserActions userActions = new UserActions();
 
@@ -22,8 +21,6 @@ public class GameLogic implements Story {
     private static final ActTwo ActTwo = new ActTwo();
 
     public static final Scanner scanner = new Scanner(System.in);
-
-    public static Helper helper;
 
     public static Consumables consumables;
 
