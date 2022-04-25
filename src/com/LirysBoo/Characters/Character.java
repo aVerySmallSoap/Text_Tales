@@ -5,14 +5,12 @@ import static com.LirysBoo.Logic.GameLogic.mob;
 import static com.LirysBoo.Logic.GameLogic.player;
 
 public abstract class Character {
-    private String name;
-    private int HP, baseMaxHP;
-    private int baseAttack,baseDefense, attack;
+    private final String name;
+    private final int baseMaxHP, baseAttack,baseDefense;
+    private int HP, attack;
     //TODO: leveling system(exp, stats), shop(gold, items)
 
     //Allows us to create a blank Character object
-    public Character() {
-    }
 
     public Character(String name, int baseMaxHP, int HP, int baseAttack, int baseDefense){
         this.name = name;

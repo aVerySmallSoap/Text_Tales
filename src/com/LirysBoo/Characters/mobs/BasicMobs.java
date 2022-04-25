@@ -5,9 +5,6 @@ import java.util.List;
 
 public class BasicMobs extends Character{
 
-    //Allows us to create a blank BasicMobs object
-    public BasicMobs(){}
-
     public BasicMobs(String name, int baseMaxHP, int HP, int baseAttack, int baseDefense) {
         super(name, baseMaxHP, HP, baseAttack, baseDefense);
         basicMobsList.add(this);

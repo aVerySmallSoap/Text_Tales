@@ -5,9 +5,12 @@ import com.LirysBoo.Characters.Character;
 import com.LirysBoo.Characters.Player;
 import com.LirysBoo.Characters.mobs.BasicMobs;
 import com.LirysBoo.Characters.mobs.IntermediateMobs;
+import com.LirysBoo.Logic.Items.Consumables;
+import com.LirysBoo.Logic.Items.Items;
 import com.LirysBoo.Story.Acts.ActOne;
 import com.LirysBoo.Story.Acts.ActTwo;
 import com.LirysBoo.Story.Story;
+import javax.swing.JOptionPane;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Scanner;
 
@@ -16,6 +19,7 @@ public class GameLogic implements Story {
     private static final Scanner scanner = new Scanner(System.in);
     private static final ActOne ActOne = new ActOne();
     private static final ActTwo ActTwo = new ActTwo();
+    public static Items consumables = new Consumables();
     public static Player player;
     public static Character mob;
     public static String name;
@@ -87,6 +91,7 @@ public class GameLogic implements Story {
         enterAnythingToContinue();
         BasicMobs.generateMobs();
         IntermediateMobs.generateMobs();
+        Items.init();
 
         do{
             scrollingClear();
@@ -142,12 +147,15 @@ public class GameLogic implements Story {
     public static void gameOver(String deathReason){
         Header("Game Over!");
         System.out.println(deathReason);
+        JOptionPane.showMessageDialog(
+                null,
+                "You were slain by " + mob.getName()
+                        + "\n A fucking " + mob.getName() + ". You loser");
         ActOne.isOnACTOne = false; ActTwo.isOnACTTwo = false; //TODO: If possible, optimize this line
     }
 
     //WIP Save system
     //TODO: Save system
-
 
     //Battle system
     public static void battleSystem(){
@@ -189,7 +197,7 @@ public class GameLogic implements Story {
             }
 
             if(storyACT >= 3){
-                System.out.println("You've won!");
+                JOptionPane.showMessageDialog(null, "You've Won!");
                 isGameRunning = false;
             }
         }

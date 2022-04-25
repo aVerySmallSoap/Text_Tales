@@ -5,8 +5,6 @@ import java.util.ArrayList;
 
 public class IntermediateMobs extends Character {
 
-    public IntermediateMobs(){}
-
     public IntermediateMobs(String name, int baseMaxHP, int HP, int baseAttack, int baseDefense) {
         super(name, baseMaxHP, HP, baseAttack, baseDefense);
         intermediateMobsList.add(this);

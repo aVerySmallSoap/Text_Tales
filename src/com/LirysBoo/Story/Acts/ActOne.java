@@ -1,5 +1,7 @@
 package com.LirysBoo.Story.Acts;
 import com.LirysBoo.Logic.GameLogic;
+import com.LirysBoo.Logic.Items.Consumables;
+import com.LirysBoo.Logic.Items.Items;
 import com.LirysBoo.Story.Story;
 import static com.LirysBoo.Logic.GameLogic.*;
 
@@ -28,6 +30,7 @@ public class ActOne implements Story {
 				A glowing fruit in a the west forest and a branch of a tree that only exists within a dungeon.
 				Upon hearing that, you set your mind to start your journey but there are dangerous creatures roaming around your country.
 				Your brother tried to stop you but you were determined to go for your beloved brother.""");
+
         enterAnythingToContinue();
         storyChap++;
     }
@@ -35,8 +38,12 @@ public class ActOne implements Story {
     void ChapterOne(){
         GameLogic.scrollingClear();
         GameLogic.Header("Act 1 : Chapter 1");
-        System.out.println("You started your journey into the northern mountains. " +
-                "It is said that a enchanted herb is found there.");
+        System.out.println("""
+                You met the doctor on the path towards the northern mountains, He gave you 5 healing potions for good luck.
+                You started your journey into the northern mountains. On the way, you met a lone traveler —
+                "What's this? Enchanted herb? I have heard rumors of such plant, they say that seven travelers have gone to look but never came back."
+                He started to walk away, bearing the information in mind, you started to resolve yourself and continued to forge onwards.""");
+
         enterAnythingToContinue();
         GameLogic.encounter();
     }
