@@ -1,5 +1,6 @@
 package com.LirysBoo.Story.Acts;
 import com.LirysBoo.Logic.GameLogic;
+import com.LirysBoo.Logic.Helper;
 import com.LirysBoo.Story.Story;
 
 import static com.LirysBoo.Logic.GameLogic.*;
@@ -21,53 +22,53 @@ public class ActTwo implements Story {
     }
 
     void intro(){
-        GameLogic.scrollingClear();
+        Helper.scrollingClear();
 
         System.out.println("""
 				Time for the second act.
 				Where people die alone in this road of unforeseen dangers""");
-        enterAnythingToContinue();
+        Helper.enterAnythingToContinue();
         storyChap++;
     }
     //Extend the story please thank you :D
     void ChapterOne(){
-        GameLogic.scrollingClear();
-        GameLogic.Header("Act 2 : Chapter 1");
+        Helper.scrollingClear();
+        Helper.Header("Act 2 : Chapter 1");
         System.out.println("You started your journey into the northern mountains. " +
                 "It is said that a enchanted herb is found there.");
-        enterAnythingToContinue();
+        Helper.enterAnythingToContinue();
         GameLogic.encounter();
     }
 
     void ChapterTwo(){
-        GameLogic.scrollingClear();
-        GameLogic.Header("Act 2 : Chapter 2");
+        Helper.scrollingClear();
+        Helper.Header("Act 2 : Chapter 2");
         System.out.println("Test 2");
-        enterAnythingToContinue();
+        Helper.enterAnythingToContinue();
         GameLogic.encounter();
     }
 
     void ChapterThree(){
-        GameLogic.scrollingClear();
-        GameLogic.Header("Act 2 : Chapter 3");
+        Helper.scrollingClear();
+        Helper.Header("Act 2 : Chapter 3");
         System.out.println("Test 3");
-        enterAnythingToContinue();
+        Helper.enterAnythingToContinue();
         GameLogic.encounter();
     }
 
     void ChapterFour(){
-        GameLogic.scrollingClear();
-        GameLogic.Header("Act 2 : Chapter 4");
+        Helper.scrollingClear();
+        Helper.Header("Act 2 : Chapter 4");
         System.out.println("Test 4");
-        enterAnythingToContinue();
+        Helper.enterAnythingToContinue();
         GameLogic.encounter();
     }
 
     void Outro(){
-        GameLogic.scrollingClear();
-        GameLogic.Header("Act 2 : Ending");
+        Helper.scrollingClear();
+        Helper.Header("Act 2 : Ending");
         System.out.println("Test 4");
-        enterAnythingToContinue();
+        Helper.enterAnythingToContinue();
         isOnACTTwo = false;
         storyACT++;
     }

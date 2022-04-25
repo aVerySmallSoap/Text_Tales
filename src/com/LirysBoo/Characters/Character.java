@@ -1,5 +1,7 @@
 package com.LirysBoo.Characters;
 import com.LirysBoo.Logic.GameLogic;
+import com.LirysBoo.Logic.Helper;
+
 import java.util.concurrent.ThreadLocalRandom;
 import static com.LirysBoo.Logic.GameLogic.mob;
 import static com.LirysBoo.Logic.GameLogic.player;
@@ -76,7 +78,7 @@ public abstract class Character {
      *
      */
     private void printStats(Character entity){
-        GameLogic.Header(entity.getName());
+        Helper.Header(entity.getName());
         System.out.println("HP: " + entity.getHP() + "/" + entity.getBaseMaxHP());
         System.out.println("Attack: " + entity.getBaseAttack());
         System.out.println("Defense: " + entity.getBaseDefense());

@@ -23,7 +23,7 @@ public class UserActions {
 
     //Here is the logic where the Action of the user is derived from
     public void fightOrFlight(){
-        Spacer(2);
+        Helper.Spacer(2);
         System.out.println("""
                  Will you fight or run away?
                  1: Fight
@@ -48,7 +48,7 @@ public class UserActions {
 
     // Try for final fantasy style choice system
     public void Actions(){
-        Spacer(3);
+        Helper.Spacer(3);
         System.out.println("""
                 What will you do?
                 1. Attack
@@ -61,14 +61,14 @@ public class UserActions {
             player.setCurrentHP(mob.getAttack());
             if(mob.getHP() <= 0){
                 mob.setHP(0);
-                scrollingClear();
+                Helper.scrollingClear();
                 mob.getStats();
                 player.getStats();
                 battleWon();
                 onGoingBattle = false;
             }else if(player.getHP() <= 0){
                 player.setHP(0);
-                scrollingClear();
+                Helper.scrollingClear();
                 mob.getStats();
                 player.getStats();
                 gameOver("You died.");
@@ -79,7 +79,7 @@ public class UserActions {
             }
         } else if(choice == 2){
             // check for potions (optional feature)
-            scrollingClear();
+            Helper.scrollingClear();
             player.usedHeal = true;
             player.heal();
             player.setCurrentHP(mob.getAttack());

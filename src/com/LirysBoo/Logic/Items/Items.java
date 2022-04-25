@@ -2,10 +2,11 @@ package com.LirysBoo.Logic.Items;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface Items {
-   List<Items> items = new ArrayList<>();
+public abstract class Items {
 
-    static void init(){
-        Consumables.init();
-    }
+    public Items(){}
+
+    public void init(){}
+
+    static List<Items> items = new ArrayList<>();
 }

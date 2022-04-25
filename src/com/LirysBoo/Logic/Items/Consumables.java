@@ -1,6 +1,6 @@
 package com.LirysBoo.Logic.Items;
 
-public class Consumables implements Items{
+public class Consumables extends Items{
     private String itemName;
     private String ITEM_TAG;
     private int itemCount, itemID;
@@ -24,7 +24,8 @@ public class Consumables implements Items{
 
     // functions
     public void consume(){}
-    public static void init(){
+    @SuppressWarnings("unused")
+    public void init(){
         Consumables healthPot = new Consumables(
                 "Healing Potion",
                 "Lirys_healingPotion",

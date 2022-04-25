@@ -6,7 +6,6 @@ import com.LirysBoo.Characters.Player;
 import com.LirysBoo.Characters.mobs.BasicMobs;
 import com.LirysBoo.Characters.mobs.IntermediateMobs;
 import com.LirysBoo.Logic.Items.Consumables;
-import com.LirysBoo.Logic.Items.Items;
 import com.LirysBoo.Story.Acts.ActOne;
 import com.LirysBoo.Story.Acts.ActTwo;
 import com.LirysBoo.Story.Story;
@@ -16,65 +15,16 @@ import java.util.Scanner;
 
 public class GameLogic implements Story {
     private static final UserActions userActions = new UserActions();
-    private static final Scanner scanner = new Scanner(System.in);
     private static final ActOne ActOne = new ActOne();
     private static final ActTwo ActTwo = new ActTwo();
-    public static Items consumables = new Consumables();
+    public static final Scanner scanner = new Scanner(System.in);
+    public static Helper helper;
+    public static Consumables consumables;
     public static Player player;
     public static Character mob;
     public static String name;
     public static boolean isGameRunning = true, onGoingBattle = true;
     public static int storyChap = 0, storyACT = 1;
-
-    // Helper methods
-
-    //Clears the console
-    public static void scrollingClear(){
-        for (int i = 0; i < 50; i++) {
-            System.out.println(" ");
-        }
-    }
-
-    //Wait on player action
-    public static void enterAnythingToContinue(){
-        System.out.println("Enter any key to continue...");
-        scanner.nextLine();
-    }
-
-    //Title headers; Also servers as stoppers
-    public static void Header(String title){
-        for (int i = 0; i < 25; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
-        System.out.println(title);
-        for (int j = 0; j < 25; j++) {
-            System.out.print("-");
-        }
-        System.out.println();
-    }
-
-    //Separator method to separate large text segments
-    public static void Separator(int lineAmount){
-        for (int i = 0; i < lineAmount; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
-    }
-
-    //Spacer method to separate texts with white spaces
-    public static void Spacer(int Amount){
-        for (int i = 0; i < Amount; i++) {
-            System.out.println();
-        }
-    }
-
-    //Skipper method; Skips the enterAnyThingToContinue text bug
-    private void Skipper(){
-        scrollingClear();
-        Header("Blank");
-        enterAnythingToContinue();
-    }
 
     //Main feature methods
     //TODO: finish gameLogic
@@ -82,19 +32,19 @@ public class GameLogic implements Story {
     //Start screen prompt
     public void startScreen(){
         boolean nameSet = false;
-        Separator(10);
+        Helper.Separator(10);
         System.out.println("""
                 Welcome to Text-Tales!
                 A simple text-based RPG-adventure game
                 Created by Lirys & Desiree""");
-        Separator(10);
-        enterAnythingToContinue();
+        Helper.Separator(10);
+        Helper.enterAnythingToContinue();
         BasicMobs.generateMobs();
         IntermediateMobs.generateMobs();
-        Items.init();
+        consumables.init();
 
         do{
-            scrollingClear();
+            Helper.scrollingClear();
             System.out.println("Enter your name: ");
             name = scanner.next();
             System.out.println("Are you sure? Y/N");
@@ -135,17 +85,17 @@ public class GameLogic implements Story {
 
     //When the player has won a battle
     public static void battleWon(){
-        Header("Victory!");
+        Helper.Header("Victory!");
         System.out.println(mob.getName() + " is defeated.");
-        Separator(20);
+        Helper.Separator(20);
         mob.setHP(mob.getBaseMaxHP());
         storyChap++;
-        enterAnythingToContinue();
+        Helper.enterAnythingToContinue();
     }
 
     //When the player has lost the battle(game)
     public static void gameOver(String deathReason){
-        Header("Game Over!");
+        Helper.Header("Game Over!");
         System.out.println(deathReason);
         JOptionPane.showMessageDialog(
                 null,
@@ -159,24 +109,24 @@ public class GameLogic implements Story {
 
     //Battle system
     public static void battleSystem(){
-        scrollingClear();
+        Helper.scrollingClear();
         while(onGoingBattle){
             mob.getStats();
             player.getStats();
-            Separator(10);
+            Helper.Separator(10);
             if(player.usedHeal){
                 System.out.println("Battle log");
-                Separator(5);
+                Helper.Separator(5);
                 System.out.println(player.getName() + " healed for 25");
                 System.out.println(mob.getName() + " dealt " + mob.getAttack() + " to " + player.getName());
                 player.usedHeal = false;
             }else{
                 System.out.println("Battle log");
-                Separator(5);
+                Helper.Separator(5);
                 System.out.println(mob.getName() + " dealt " + mob.getAttack() + " to " + player.getName());
                 System.out.println(player.getName() + " dealt " + player.getAttack() + " to " + mob.getName());
             }
-            Separator(10);
+            Helper.Separator(10);
             userActions.Actions();
         }
     }
@@ -188,7 +138,7 @@ public class GameLogic implements Story {
     public void gameRunning(){
         while (isGameRunning){
             startScreen();
-            Skipper();
+            Helper.Skipper();
             while(ActOne.isOnACTOne){
                 ActOne.getChapter(storyChap);
             }
