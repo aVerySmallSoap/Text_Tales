@@ -136,7 +136,6 @@ public class GameLogic{
     }
 
     //Attempts Counter
-    //TODO: Attempts Counter
     public static void fileLoader() throws IOException {
         BufferedReader fileReader = new BufferedReader(new FileReader(ATTEMPT_FILE_PATH));
         String text;
