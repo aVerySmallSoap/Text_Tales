@@ -6,5 +6,5 @@ public abstract class Items {
 
     public Items(){}
 
-    static final List<Items> items = new ArrayList<>();
+    static final List<Items> itemsList = new ArrayList<>();
 }

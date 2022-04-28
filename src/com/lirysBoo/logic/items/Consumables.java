@@ -19,7 +19,7 @@ public class Consumables extends Items{
         this.ITEM_TAG = itemTag;
         this.itemID = itemID;
         this.itemCount = count;
-        items.add(this);
+        itemsList.add(this);
     }
 
     public int getItemCount() { return itemCount;}
