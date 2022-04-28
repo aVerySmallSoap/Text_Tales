@@ -18,7 +18,7 @@ public class IntermediateMobs extends Character {
                 "Zombie",
                 35,
                 35,
-                15,
-                25);
+                10,
+                15);
     }
 }
