@@ -1,6 +1,5 @@
 package com.lirysBoo.logic;
-import static com.lirysBoo.characters.mobs.BasicMobs.basicMobsList;
-import static com.lirysBoo.characters.mobs.IntermediateMobs.intermediateMobsList;
+
 import com.lirysBoo.characters.Character;
 import com.lirysBoo.characters.Player;
 import com.lirysBoo.characters.mobs.BasicMobs;
@@ -8,9 +7,14 @@ import com.lirysBoo.characters.mobs.IntermediateMobs;
 import com.lirysBoo.logic.items.Consumables;
 import com.lirysBoo.story.acts.ActOne;
 import com.lirysBoo.story.acts.ActTwo;
-import javax.swing.JOptionPane;
-import java.util.concurrent.ThreadLocalRandom;
+import javax.swing.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
+import static com.lirysBoo.characters.mobs.BasicMobs.basicMobsList;
+import static com.lirysBoo.characters.mobs.IntermediateMobs.intermediateMobsList;
 
 public class GameLogic{
 
@@ -19,6 +23,10 @@ public class GameLogic{
     private static final ActOne ActOne = new ActOne();
 
     private static final ActTwo ActTwo = new ActTwo();
+
+    private static final File ATTEMPT_FILE_PATH = new File("Attempts.txt");
+
+    private static final List<Integer> parsedNumbers = new ArrayList<>();
 
     public static final Scanner scanner = new Scanner(System.in);
 
@@ -32,7 +40,7 @@ public class GameLogic{
 
     public static boolean isGameRunning = true, onGoingBattle = true;
 
-    public static int storyChap = 0, storyACT = 1;
+    public static int storyChap = 0, storyACT = 1, attempts = 0;
 
     //Main feature methods
     //TODO: finish gameLogic
@@ -40,11 +48,27 @@ public class GameLogic{
     //Start screen prompt
     public void startScreen(){
         boolean nameSet = false;
+
+        try{
+            if (!ATTEMPT_FILE_PATH.exists()){
+                BufferedWriter fileWriter = new BufferedWriter(new FileWriter(ATTEMPT_FILE_PATH));
+                fileWriter.write("Your number of attempts: " + attempts);
+                fileWriter.close();
+                fileLoader();
+            }else {
+                fileLoader();
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
         Helper.Separator(10);
         System.out.println("""
                 Welcome to Text-Tales!
                 A simple text-based RPG-adventure game
                 Created by Lirys & Desiree""");
+        Helper.Separator(10);
+        System.out.println("Your number of attempts: " + parsedNumbers.get(0));
         Helper.Separator(10);
         Helper.enterAnythingToContinue();
         BasicMobs.generateMobs();
@@ -111,8 +135,22 @@ public class GameLogic{
         ActOne.isOnACTOne = false; ActTwo.isOnACTTwo = false; //TODO: If possible, optimize this line
     }
 
-    //WIP Save system
-    //TODO: Save system
+    //Attempts Counter
+    //TODO: Attempts Counter
+    public static void fileLoader() throws IOException {
+        BufferedReader fileReader = new BufferedReader(new FileReader(ATTEMPT_FILE_PATH));
+        String text;
+        while ((text = fileReader.readLine()) != null){
+            String s = text.replaceAll("\\D", "");
+            parsedNumbers.add(Integer.parseInt(s));
+        }
+    }
+
+    public static void fileSaver()throws IOException{
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(ATTEMPT_FILE_PATH));
+        fileWriter.write("Your number of attempts: " + attempts);
+        fileWriter.close();
+    }
 
     //Battle system
     public static void battleSystem(){
@@ -155,6 +193,14 @@ public class GameLogic{
 
             if(storyACT >= 3){
                 JOptionPane.showMessageDialog(null, "You've Won!");
+                attempts = 0;
+
+                try {
+                    fileSaver();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
                 isGameRunning = false;
             }
         }

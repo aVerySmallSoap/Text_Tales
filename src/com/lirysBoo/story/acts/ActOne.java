@@ -1,6 +1,9 @@
 package com.lirysBoo.story.acts;
+
 import com.lirysBoo.logic.GameLogic;
 import com.lirysBoo.logic.Helper;
+
+import java.io.IOException;
 
 import static com.lirysBoo.logic.GameLogic.*;
 
@@ -31,6 +34,14 @@ public class ActOne {
 				Your brother tried to stop you but you were determined to go for your beloved brother.""");
 
         Helper.enterAnythingToContinue();
+        attempts++;
+
+        try {
+            fileSaver();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         storyChap++;
     }
 
