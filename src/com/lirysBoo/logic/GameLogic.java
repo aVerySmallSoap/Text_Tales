@@ -5,14 +5,17 @@ import com.lirysBoo.characters.Player;
 import com.lirysBoo.characters.mobs.BasicMobs;
 import com.lirysBoo.characters.mobs.IntermediateMobs;
 import com.lirysBoo.logic.items.Consumables;
+import com.lirysBoo.logic.items.Items;
 import com.lirysBoo.story.acts.ActOne;
 import com.lirysBoo.story.acts.ActTwo;
+
 import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
+
 import static com.lirysBoo.characters.mobs.BasicMobs.basicMobsList;
 import static com.lirysBoo.characters.mobs.IntermediateMobs.intermediateMobsList;
 
@@ -32,6 +35,8 @@ public class GameLogic{
 
     public static Consumables consumables = new Consumables();
 
+    public static Items currentSelectedItem;
+
     public static Player player;
 
     public static Character mob;
@@ -40,7 +45,7 @@ public class GameLogic{
 
     public static boolean isGameRunning = true, onGoingBattle = true;
 
-    public static int storyChap = 0, storyACT = 1, attempts = 0;
+    public static int storyChap = 0, storyACT = 1, attempts;
 
     //Main feature methods
     //TODO: finish gameLogic
@@ -113,12 +118,18 @@ public class GameLogic{
             }
     }
 
+    public static void Loot(){
+        currentSelectedItem = consumables.getItem(0);
+        System.out.println(mob.getName() + " Dropped 5 " + currentSelectedItem.getItemName());
+        currentSelectedItem.addItemCount(5);
+    }
 
     //When the player has won a battle
     public static void battleWon(){
         Helper.Header("Victory!");
         System.out.println(mob.getName() + " is defeated.");
         Helper.Separator(20);
+        Loot();
         mob.setHP(mob.getBaseMaxHP());
         storyChap++;
         Helper.enterAnythingToContinue();
@@ -131,8 +142,7 @@ public class GameLogic{
         JOptionPane.showMessageDialog(
                 null,
                 "You were slain by " + mob.getName()
-                        + "\n A fucking " + mob.getName() + ". You loser");
-        ActOne.isOnACTOne = false; ActTwo.isOnACTTwo = false; //TODO: If possible, optimize this line
+                        + "\n Game Over.");
     }
 
     //Attempts Counter
@@ -142,6 +152,7 @@ public class GameLogic{
         while ((text = fileReader.readLine()) != null){
             String s = text.replaceAll("\\D", "");
             parsedNumbers.add(Integer.parseInt(s));
+            attempts = parsedNumbers.get(0);
         }
     }
 
@@ -183,10 +194,10 @@ public class GameLogic{
         while (isGameRunning){
             startScreen();
             Helper.Skipper();
-            while(ActOne.isOnACTOne){
+            while(ActOne.isOnACTOne && isGameRunning){
                 ActOne.getChapter(storyChap);
             }
-            while(ActTwo.isOnACTTwo){
+            while(ActTwo.isOnACTTwo && isGameRunning){
                 ActTwo.getChapter(storyChap);
             }
 
@@ -199,7 +210,6 @@ public class GameLogic{
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
                 isGameRunning = false;
             }
         }

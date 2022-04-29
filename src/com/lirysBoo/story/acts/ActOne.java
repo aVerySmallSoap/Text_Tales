@@ -34,6 +34,7 @@ public class ActOne {
 				Your brother tried to stop you but you were determined to go for your beloved brother.""");
 
         Helper.enterAnythingToContinue();
+
         attempts++;
 
         try {
@@ -54,6 +55,8 @@ public class ActOne {
                 "What's this? Enchanted herb? I have heard rumors of such plant, they say that seven travelers have gone to look but never came back."
                 He started to walk away, bearing the information in mind, you started to resolve yourself and continued to forge onwards.""");
 
+        currentSelectedItem = consumables.getItem(0);
+        currentSelectedItem.addItemCount(5);
         Helper.enterAnythingToContinue();
         GameLogic.encounter();
     }
@@ -87,8 +90,8 @@ public class ActOne {
         Helper.Header("Act 1 : Outro");
         System.out.println("Test 4");
         Helper.enterAnythingToContinue();
-        isOnACTOne = false;
         storyChap = 0;
-        storyACT++;   
+        storyACT++;
+        isOnACTOne = false;
     }
 }

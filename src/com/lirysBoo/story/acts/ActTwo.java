@@ -68,7 +68,7 @@ public class ActTwo {
         Helper.Header("Act 2 : Ending");
         System.out.println("Test 4");
         Helper.enterAnythingToContinue();
-        isOnACTTwo = false;
         storyACT++;
+        isOnACTTwo = false;
     }
 }

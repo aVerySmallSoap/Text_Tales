@@ -1,6 +1,8 @@
 package com.lirysBoo.logic;
+
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
+
 import static com.lirysBoo.logic.GameLogic.*;
 
 public class UserActions {
@@ -53,9 +55,10 @@ public class UserActions {
                 What will you do?
                 1. Attack
                 2. Heal
-                3. Run
+                3. Items
+                4. Run
                 """);
-        int choice = userChoices("->", 3);
+        int choice = userChoices("->", 4);
         if(choice == 1){
             mob.setCurrentHP(player.getAttack());
             player.setCurrentHP(mob.getAttack());
@@ -78,13 +81,24 @@ public class UserActions {
                 battleSystem();
             }
         } else if(choice == 2){
-            // check for potions (optional feature)
-            Helper.scrollingClear();
-            player.usedHeal = true;
-            player.heal();
-            player.setCurrentHP(mob.getAttack());
-            battleSystem();
+            currentSelectedItem = consumables.getItem(0);
+            if (currentSelectedItem.getITEM_TAG().equals("Lirys_healingPotion") && currentSelectedItem.getItemCount() != 0 ){
+                currentSelectedItem.removeItemCount(1);
+                Helper.scrollingClear();
+                player.usedHeal = true;
+                player.heal();
+                player.setCurrentHP(mob.getAttack());
+                battleSystem();
+            } else {
+                System.out.println("You ran out of " + currentSelectedItem.getItemName());
+                Helper.enterAnythingToContinue();
+                battleSystem();
+            }
         } else if(choice == 3){
+            Helper.Separator(5);
+            consumables.getItemsInventory();
+            Actions();
+        }else if(choice == 4){
         Run();
         }
     }
