@@ -1,5 +1,7 @@
 package com.lirysBoo.characters.mobs;
+
 import com.lirysBoo.characters.Character;
+
 import java.util.ArrayList;
 import java.util.List;
 

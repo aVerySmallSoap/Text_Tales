@@ -64,7 +64,11 @@ public class ActOne {
     public void ChapterTwo(){
         Helper.scrollingClear();
         Helper.Header("Act 1 : Chapter 2");
-        System.out.println("Test 2");
+        System.out.println("""
+                At last you found the enchanted herb! You quickly went down and exited the mountains as to not encounter an enemy
+                again. After the enchanted herb, you planned to obtain the glowing fruit in the western forest. Since you are in the northern
+                side of the country. You decided to take a horse and make it your companion throughout the journey...
+                Luckily you found an empty stable. However, you found an enemy there...""");
         Helper.enterAnythingToContinue();
         GameLogic.encounter();
     }
@@ -72,7 +76,10 @@ public class ActOne {
     public void ChapterThree(){
         Helper.scrollingClear();
         Helper.Header("Act 1 : Chapter 3");
-        System.out.println("Test 3");
+        System.out.println("""
+                You hurriedly took a horse after you defeated the enemy! You have no time to spare and went your way towards the west..
+                After you arrived at your destination, many warned you not to enter to the dark and misty forest, nonetheless you are
+                determined to enter it for your brother. You began your search for the glowing fruit.""");
         Helper.enterAnythingToContinue();
         GameLogic.encounter();
     }
@@ -80,7 +87,12 @@ public class ActOne {
     public void ChapterFour(){
         Helper.scrollingClear();
         Helper.Header("Act 1 : Chapter 4");
-        System.out.println("Test 4");
+        System.out.println("""
+                It took days and days to search for the glowing fruit. However you still didn't get a single clue or a hint
+                of its location. You didn't let discouragement reach your heart for you would do anything to save your one and only family.
+                As you are walking by an unknown path. You found a swamp filled with mist. You wondered why a tree is in the middle
+                of the swamp and how it survived. To your surprise, you saw the glowing fruit! As you went for the fruit, it seems
+                that there are enemies awaiting ahead of you.""");
         Helper.enterAnythingToContinue();
         GameLogic.encounter();
     }
@@ -88,7 +100,12 @@ public class ActOne {
     public void Outro(){
         Helper.scrollingClear();
         Helper.Header("Act 1 : Outro");
-        System.out.println("Test 4");
+        System.out.println("""
+                You stand victorious above the enemy that you just had defeated.. Finally, you reached and took the glowing fruit.
+                You quickly went back to the entrance of the forest. Luckily you didn't encounter another enemy again.. After you rested to
+                an inn. It seemed you do not have the clue on which dungeon the beautiful flower resides in.
+                
+                In the morning after that, you decided to go back to your town and ask the mysterious lady and check on your brother.""");
         Helper.enterAnythingToContinue();
         storyChap = 0;
         storyACT++;

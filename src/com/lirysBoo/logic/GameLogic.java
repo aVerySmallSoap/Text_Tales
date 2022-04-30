@@ -48,7 +48,6 @@ public class GameLogic{
     public static int storyChap = 0, storyACT = 1, attempts;
 
     //Main feature methods
-    //TODO: finish gameLogic
 
     //Start screen prompt
     public void startScreen(){

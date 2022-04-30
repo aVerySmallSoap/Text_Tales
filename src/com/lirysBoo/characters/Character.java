@@ -1,6 +1,9 @@
 package com.lirysBoo.characters;
+
 import com.lirysBoo.logic.Helper;
+
 import java.util.concurrent.ThreadLocalRandom;
+
 import static com.lirysBoo.logic.GameLogic.mob;
 import static com.lirysBoo.logic.GameLogic.player;
 

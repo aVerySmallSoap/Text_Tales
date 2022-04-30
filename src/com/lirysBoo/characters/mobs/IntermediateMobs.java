@@ -1,4 +1,5 @@
 package com.lirysBoo.characters.mobs;
+
 import com.lirysBoo.characters.Character;
 
 import java.util.ArrayList;
@@ -21,4 +22,16 @@ public class IntermediateMobs extends Character {
                 10,
                 15);
     }
+    IntermediateMobs Werewolf = new IntermediateMobs(
+            "Werewolf",
+            35,
+            35,
+            20,
+            20);
+    IntermediateMobs Skeleton = new IntermediateMobs(
+            "Skeleton",
+            30,
+            40,
+            20,
+            20);
 }

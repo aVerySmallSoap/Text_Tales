@@ -1,4 +1,5 @@
 package com.lirysBoo.logic;
+
 import static com.lirysBoo.logic.GameLogic.scanner;
 
 public class Helper {
