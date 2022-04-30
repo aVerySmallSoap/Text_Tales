@@ -38,6 +38,7 @@ public class UserActions {
         }
     }
 
+    //Allows the player to run
     private void Run(){
         int a = ThreadLocalRandom.current().nextInt(1,10);
         if( a <= 3){
@@ -48,7 +49,7 @@ public class UserActions {
         }
     }
 
-    // Try for final fantasy style choice system
+    // The logic method where the players actions are handled
     public void Actions(){
         Helper.Spacer(3);
         System.out.println("""
@@ -60,8 +61,8 @@ public class UserActions {
                 """);
         int choice = userChoices("->", 4);
         if(choice == 1){
-            mob.setCurrentHP(player.getAttack());
-            player.setCurrentHP(mob.getAttack());
+            mob.dealDamageToCurrentHP(player.getAttack());
+            player.dealDamageToCurrentHP(mob.getAttack());
             if(mob.getHP() <= 0){
                 mob.setHP(0);
                 Helper.scrollingClear();
@@ -87,7 +88,7 @@ public class UserActions {
                 Helper.scrollingClear();
                 player.usedHeal = true;
                 player.heal();
-                player.setCurrentHP(mob.getAttack());
+                player.dealDamageToCurrentHP(mob.getAttack());
                 battleSystem();
             } else {
                 System.out.println("You ran out of " + currentSelectedItem.getItemName());

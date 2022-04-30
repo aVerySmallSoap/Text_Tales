@@ -5,10 +5,23 @@ import com.lirysBoo.logic.Helper;
 
 import static com.lirysBoo.logic.GameLogic.*;
 
+/**
+ * Chapters of the second act
+ * <p>
+ * {@code ActTwo} functions the same as {@link ActOne}, but is instead used for the second act.
+ * <br>
+ *  It is used to simplify the retrieving of chapters, and to provide little logical operations to help with {@link GameLogic}
+ */
 public class ActTwo {
 
+    //A variable used to check, whether the programme is on ACT_TWO
     public boolean isOnACTTwo = true;
 
+    /**
+     * {@code getChapter} is a method which takes in a number to reference the code to its assigned method/chapter.
+     *
+     * @param Chapter references a number to a chapter
+     */
     public void getChapter(int Chapter){
         switch (Chapter){
             case 0 -> intro();
@@ -21,6 +34,7 @@ public class ActTwo {
         }
     }
 
+    //Act Two Introduction
     public void intro(){
         Helper.scrollingClear();
 
@@ -37,6 +51,7 @@ public class ActTwo {
         storyChap++;
     }
 
+    //The first chapter of the act
     public void ChapterOne(){
         Helper.scrollingClear();
         Helper.Header("Act 2 : Chapter 1");
@@ -48,6 +63,7 @@ public class ActTwo {
         GameLogic.encounter();
     }
 
+    //The second chapter of the act
     public void ChapterTwo(){
         Helper.scrollingClear();
         Helper.Header("Act 2 : Chapter 2");
@@ -61,6 +77,7 @@ public class ActTwo {
         GameLogic.encounter();
     }
 
+    //The third chapter of the act
     public void ChapterThree(){
         Helper.scrollingClear();
         Helper.Header("Act 2 : Chapter 3");
@@ -72,6 +89,7 @@ public class ActTwo {
         GameLogic.encounter();
     }
 
+    //The fourth chapter of the act
     public void ChapterFour(){
         Helper.scrollingClear();
         Helper.Header("Act 2 : Chapter 4");
@@ -89,6 +107,7 @@ public class ActTwo {
         GameLogic.encounter();
     }
 
+    //Act Two Outro
     public void Outro(){
         Helper.scrollingClear();
         Helper.Header("Act 2 : Ending");

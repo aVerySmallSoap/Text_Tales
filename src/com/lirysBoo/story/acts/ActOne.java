@@ -7,10 +7,23 @@ import java.io.IOException;
 
 import static com.lirysBoo.logic.GameLogic.*;
 
+/**
+ * Chapters of the first Act
+ * <p>
+ * {@code ActOne} acts as a reference for different chapters in the first act.
+ * <br>
+ *  It is used to simplify the retrieving of chapters, and to provide little logical operations to help with {@link GameLogic}
+ */
 public class ActOne {
 
+    //A variable used to check, whether the programme is on ACT_ONE
     public boolean isOnACTOne = true;
 
+    /**
+     * {@code getChapter} is a method which takes in a number to reference the code to its assigned method/chapter.
+     *
+     * @param Chapter references a number to a chapter
+     */
     public void getChapter(int Chapter){
         switch (Chapter){
             case 0 -> intro();
@@ -23,6 +36,7 @@ public class ActOne {
         }
     }
 
+    //Act One Introduction
     public void intro(){
         Helper.scrollingClear();
 
@@ -46,6 +60,7 @@ public class ActOne {
         storyChap++;
     }
 
+    //The first chapter of the act
     public void ChapterOne(){
         Helper.scrollingClear();
         Helper.Header("Act 1 : Chapter 1");
@@ -60,7 +75,8 @@ public class ActOne {
         Helper.enterAnythingToContinue();
         GameLogic.encounter();
     }
-    //Extend the story please thank you :D
+
+    //The second chapter of the act
     public void ChapterTwo(){
         Helper.scrollingClear();
         Helper.Header("Act 1 : Chapter 2");
@@ -73,6 +89,7 @@ public class ActOne {
         GameLogic.encounter();
     }
 
+    //The third chapter of the act
     public void ChapterThree(){
         Helper.scrollingClear();
         Helper.Header("Act 1 : Chapter 3");
@@ -84,6 +101,7 @@ public class ActOne {
         GameLogic.encounter();
     }
 
+    //The fourth chapter of the act
     public void ChapterFour(){
         Helper.scrollingClear();
         Helper.Header("Act 1 : Chapter 4");
@@ -97,6 +115,7 @@ public class ActOne {
         GameLogic.encounter();
     }
 
+    //Act One Outro
     public void Outro(){
         Helper.scrollingClear();
         Helper.Header("Act 1 : Outro");

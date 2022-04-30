@@ -2,7 +2,12 @@ package com.lirysBoo.logic;
 
 import static com.lirysBoo.logic.GameLogic.scanner;
 
+/**
+ * The {@code Helper} is a class that holds many QoL functions
+ */
 public class Helper {
+
+    //Creates 50 whitespaces to create the illusions of clearing the terminal
     public static void scrollingClear(){
         for (int i = 0; i < 50; i++) {
             System.out.println(" ");
