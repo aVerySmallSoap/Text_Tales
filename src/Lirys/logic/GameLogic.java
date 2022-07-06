@@ -99,17 +99,18 @@ public class GameLogic{
         }
     }
 
-    public static void Loot(){
-        currentSelectedItem = consumables.getItem(0);
-        System.out.println(mob.getName() + " Dropped 5 " + currentSelectedItem.getItemName());
-        currentSelectedItem.addItemCount(5);
+    public static void mobRewards(){
+        int randomNum = ThreadLocalRandom.current().nextInt(0, 5);
+        currentSelectedItem = consumables.getItem("Lirys:Healing_Potion");
+        System.out.println(mob.getName() + " Dropped "+ randomNum + currentSelectedItem.getItemName());
+        currentSelectedItem.addItemCount(randomNum);
     }
 
     public static void battleWon(){
         Helper.Header("Victory!");
         System.out.println(mob.getName() + " is defeated.");
         Helper.Separator(20);
-        Loot();
+        mobRewards();
         mob.setHP(mob.getBaseMaxHP());
         storyChap++;
         Helper.enterAnythingToContinue();

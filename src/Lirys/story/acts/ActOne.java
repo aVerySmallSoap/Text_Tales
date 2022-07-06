@@ -70,7 +70,7 @@ public class ActOne {
                 "What's this? Enchanted herb? I have heard rumors of such plant, they say that seven travelers have gone to look but never came back."
                 He started to walk away, bearing the information in mind, you started to resolve yourself and continued to forge onwards.""");
 
-        currentSelectedItem = consumables.getItem(0);
+        currentSelectedItem = consumables.getItem("Lirys:Healing_Potion");
         currentSelectedItem.addItemCount(5);
         Helper.enterAnythingToContinue();
         GameLogic.encounter();

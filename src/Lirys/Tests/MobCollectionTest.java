@@ -10,7 +10,7 @@ import java.util.Arrays;
 class MobCollectionTest {
 
     private final MobCollection underTest = new MobCollection();
-    private Mobs a = new Mobs("A",
+    private final Mobs a = new Mobs("A",
             1,
             1,
             1 ,
@@ -21,7 +21,7 @@ class MobCollectionTest {
 
         System.out.println(Arrays.toString(MobCollection.MOB_DICTIONARY.entrySet().toArray()));
         //passed
-        Assertions.assertEquals(a, underTest.Add(a));
+        Assertions.assertEquals(a, underTest.addMob(a));
     }
 
     @Test

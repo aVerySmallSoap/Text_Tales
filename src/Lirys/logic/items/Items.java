@@ -2,32 +2,25 @@ package Lirys.logic.items;
 
 import Lirys.logic.Helper;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static Lirys.logic.GameLogic.currentSelectedItem;
+import java.util.*;
 
 public abstract class Items {
-
-    static List<Items> itemsList = new ArrayList<>();
+    protected static final Map<String, Items> ITEMS_COLLECTION = new HashMap<>();
 
     private String itemName, ITEM_TAG;
 
-    private int itemCount, itemID;
+    private int itemCount;
 
     public Items(){}
 
-    public Items(String itemName, String itemTag, int itemID, int count){
+    public Items(String itemName, String itemTag, int count){
         this.itemName = itemName;
         this.ITEM_TAG = itemTag;
-        this.itemID = itemID;
         this.itemCount = count;
     }
 
     // Getters and Setters
     public int getItemCount() { return itemCount;}
-    @SuppressWarnings("unused")
-    public int getItemID()  { return itemID;}
 
     public String getITEM_TAG() {return ITEM_TAG;}
 
@@ -35,33 +28,22 @@ public abstract class Items {
 
     public void setItemCount(int Amount){this.itemCount = Amount;}
 
-    public Items getItem(int itemID){
-        for (int i = 0; i < itemsList.size(); i++) {
-            if (i == itemID){
-                currentSelectedItem = itemsList.get(i);
-                return currentSelectedItem;
-            }
-        }
-        return null;
+    public void addItem(String metaID, Items items){
+        ITEMS_COLLECTION.put(metaID, items);
     }
-    // Method overloading
-    @SuppressWarnings("unused")
-    public Items getItem(String ITEM_TAG){
-        for (Items a : itemsList) {
-            var b = a.getITEM_TAG();
-            if (b.equals(ITEM_TAG)) {
-                currentSelectedItem = a;
-                return currentSelectedItem;
-            }
-        }
-        return null;
+
+    public Items getItem(String itemTag){
+        return ITEMS_COLLECTION.get(itemTag);
     }
 
     public void getItemsInventory(){
-        for (Items item : itemsList) {
-            System.out.println(item.getItemName());
-            System.out.println("Amount: " + item.getItemCount());
-            Helper.Separator(5);
+        for (String metaID: ITEMS_COLLECTION.keySet()){
+            if (metaID.equals("Lirys:Healing_Potion")){
+                Items item = ITEMS_COLLECTION.get(metaID);
+                System.out.println(item.getItemName());
+                System.out.println("Amount: " + item.getItemCount());
+                Helper.Separator(5);
+            }
         }
     }
 

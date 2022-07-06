@@ -11,7 +11,7 @@ public class MobCollection {
     public static final MobCollection MOB_COLLECTION = new MobCollection();
 
     //Methods
-    public Mobs Add(Mobs Mob){
+    public Mobs addMob(Mobs Mob){
         mobID++;
         return MOB_DICTIONARY.putIfAbsent(mobID, Mob);
     }

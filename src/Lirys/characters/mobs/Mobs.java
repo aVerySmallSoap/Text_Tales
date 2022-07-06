@@ -13,7 +13,7 @@ public class Mobs extends Character{
     //Constructor
     public Mobs(String name, int baseMaxHP, int HP, int baseAttack, int baseDefense) {
         super(name, baseMaxHP, HP, baseAttack, baseDefense);
-        MOB_COLLECTION.Add(this);
+        MOB_COLLECTION.addMob(this);
     }
     //Special Methods
     //TODO: Special Methods for basic mobs.

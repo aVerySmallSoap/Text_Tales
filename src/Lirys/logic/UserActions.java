@@ -82,8 +82,8 @@ public class UserActions {
                 battleSystem();
             }
         } else if(choice == 2){
-            currentSelectedItem = consumables.getItem(0);
-            if (currentSelectedItem.getITEM_TAG().equals("Lirys_healingPotion") && currentSelectedItem.getItemCount() != 0 ){
+            currentSelectedItem = consumables.getItem("Lirys:Healing_Potion");
+            if (currentSelectedItem.getITEM_TAG().equals("Lirys:Healing_Potion") && currentSelectedItem.getItemCount() != 0 ){
                 currentSelectedItem.removeItemCount(1);
                 Helper.scrollingClear();
                 player.usedHeal = true;
