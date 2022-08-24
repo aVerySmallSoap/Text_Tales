@@ -1,21 +1,31 @@
 package Lirys.logic.items;
 
-import static Lirys.logic.items.Items.ITEMS_COLLECTION;
-
 public class Consumables extends Items{
 
     public Consumables(){}
 
+    public Consumables(String itemName, String itemStringTag, int itemNumberTag, int count){
+        super(itemName, itemStringTag, itemNumberTag, count);
+        ITEMS_STRING_COLLECTION.put(this.getITEM_STRING_TAG(), this);
+        ITEMS_NUMBER_COLLECTION.put(this.getITEM_NUMBER_TAG(), this);
+    }
+
     public Consumables(String itemName, String itemTag, int count){
         super(itemName, itemTag, count);
-        ITEMS_COLLECTION.put(this.getITEM_TAG(), this);
+        ITEMS_STRING_COLLECTION.put(this.getITEM_STRING_TAG(), this);
+    }
+
+    public Consumables(String itemName, int itemTag, int count){
+        super(itemName, itemTag, count);
+        ITEMS_NUMBER_COLLECTION.put(this.getITEM_NUMBER_TAG(), this);
     }
 
     @SuppressWarnings("unused")
     public void init(){
-        Consumables healthPot = new Consumables(
+        Consumables healthPotT = new Consumables(
                 "Healing Potion",
                 "Lirys:Healing_Potion",
+                0,
                 0
         );
     }
