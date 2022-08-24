@@ -20,13 +20,15 @@ public class Consumables extends Items{
         ITEMS_NUMBER_COLLECTION.put(this.getITEM_NUMBER_TAG(), this);
     }
 
+    static Consumables healthPot = new Consumables(
+            "Healing Potion",
+            "Lirys:Healing_Potion",
+            0,
+            0
+    );
+
     @SuppressWarnings("unused")
     public void init(){
-        Consumables healthPotT = new Consumables(
-                "Healing Potion",
-                "Lirys:Healing_Potion",
-                0,
-                0
-        );
+        final Consumables healthPot;
     }
 }

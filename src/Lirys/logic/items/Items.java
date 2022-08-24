@@ -36,8 +36,21 @@ public abstract class Items {
     // Getters and Setters
 
     public void getStringItemCollection(){
-        ITEMS_STRING_COLLECTION.values();
-        ITEMS_NUMBER_COLLECTION.values();
+        ITEMS_STRING_COLLECTION.forEach(
+                (itemID, itemName) -> {
+                    for (int i = 0; i < ITEMS_STRING_COLLECTION.size(); i++) {
+                        System.out.println("Entry #"+i+": " + itemID + ", " + itemName.getItemName());
+                    }
+                }
+        );
+
+        ITEMS_NUMBER_COLLECTION.forEach(
+                (itemID, itemName) -> {
+                    for (int i = 0; i < ITEMS_NUMBER_COLLECTION.size(); i++) {
+                        System.out.println("Entry #"+i+": " + itemID + ", " + itemName.getItemName() );
+                    }
+                }
+        );
     }
 
     public int getItemCount() { return itemCount;}
@@ -80,6 +93,8 @@ public abstract class Items {
                 System.out.println(item.getItemName());
                 System.out.println("Amount: " + item.getItemCount());
                 Helper.Separator(5);
+                System.out.println("{ITEM ID} ; {ITEM NAME}");
+                getStringItemCollection();
             }
         }
     }

@@ -102,6 +102,7 @@ public class GameLogic{
     public static void mobRewards(){
         int randomNum = ThreadLocalRandom.current().nextInt(0, 5);
         currentSelectedItem = consumables.getItem("Lirys:Healing_Potion");
+        player.addItemToInventory();
         System.out.println(mob.getName() + " Dropped "+ randomNum + " " + currentSelectedItem.getItemName());
         currentSelectedItem.addItemCount(randomNum);
     }
