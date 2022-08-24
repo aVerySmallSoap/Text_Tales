@@ -6,7 +6,10 @@ import java.util.*;
 
 public abstract class Items {
     protected static final Map<String, Items> ITEMS_STRING_COLLECTION = new HashMap<>();
+
     protected static final Map<Integer, Items> ITEMS_NUMBER_COLLECTION = new HashMap<>();
+
+    protected static final Map<Integer, Items> PLAYER_INVENTORY = new HashMap<>(); //Slot, Item
 
     private String itemName, ITEM_STRING_TAG;
 
@@ -35,7 +38,7 @@ public abstract class Items {
 
     // Getters and Setters
 
-    public void getStringItemCollection(){
+    public void getItemDictionary(){
         ITEMS_STRING_COLLECTION.forEach(
                 (itemID, itemName) -> {
                     for (int i = 0; i < ITEMS_STRING_COLLECTION.size(); i++) {
@@ -44,6 +47,26 @@ public abstract class Items {
                 }
         );
 
+        ITEMS_NUMBER_COLLECTION.forEach(
+                (itemID, itemName) -> {
+                    for (int i = 0; i < ITEMS_NUMBER_COLLECTION.size(); i++) {
+                        System.out.println("Entry #"+i+": " + itemID + ", " + itemName.getItemName() );
+                    }
+                }
+        );
+    }
+
+    public void getStringItemCollection(){
+        ITEMS_STRING_COLLECTION.forEach(
+                (itemID, itemName) -> {
+                    for (int i = 0; i < ITEMS_STRING_COLLECTION.size(); i++) {
+                        System.out.println("Entry #"+i+": " + itemID + ", " + itemName.getItemName());
+                    }
+                }
+        );
+    }
+
+    public void getNumberItemCollection(){
         ITEMS_NUMBER_COLLECTION.forEach(
                 (itemID, itemName) -> {
                     for (int i = 0; i < ITEMS_NUMBER_COLLECTION.size(); i++) {
@@ -78,25 +101,37 @@ public abstract class Items {
         ITEMS_NUMBER_COLLECTION.put(metaID, items);
     }
 
+    public void addItemToPlayerInventory(Items Item){
+        for (int i = 0; i < PLAYER_INVENTORY.size(); i++) {
+            if (PLAYER_INVENTORY.get(i) == null){
+                PLAYER_INVENTORY.put(Item.getITEM_NUMBER_TAG(), Item);
+            }else{
+                i++;
+            }
+        }
+    }
+
+    public void getItemsFromPlayerInventory(){
+        PLAYER_INVENTORY.forEach(
+                (inventorySlot, Item) -> {
+                    System.out.println("Slot: " + inventorySlot);
+                    System.out.println("Name: " + Item.getItemName());
+                    System.out.println("Count: " + Item.getItemCount());
+                    Helper.Separator(5);
+                }
+        );
+    }
+
+    public static void removeItemFromPlayerInventory(){
+
+    }
+
     public Items getItem(String itemTag){
         return ITEMS_STRING_COLLECTION.get(itemTag);
     }
 
     public Items getItem(int itemTag){
         return ITEMS_NUMBER_COLLECTION.get(itemTag);
-    }
-
-    public void getItemsInventory(){
-        for (String metaID: ITEMS_STRING_COLLECTION.keySet()){
-            if (metaID.equals("Lirys:Healing_Potion")){
-                Items item = ITEMS_STRING_COLLECTION.get(metaID);
-                System.out.println(item.getItemName());
-                System.out.println("Amount: " + item.getItemCount());
-                Helper.Separator(5);
-                System.out.println("{ITEM ID} ; {ITEM NAME}");
-                getStringItemCollection();
-            }
-        }
     }
 
     public void addItemCount(int Amount){

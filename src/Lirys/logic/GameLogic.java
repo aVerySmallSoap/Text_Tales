@@ -31,7 +31,7 @@ public class GameLogic{
 
     public static Consumables consumables = new Consumables();
 
-    public static Items currentSelectedItem;
+    public static Items currentSelectedItem = null;
 
     public static Player player;
 
@@ -102,7 +102,7 @@ public class GameLogic{
     public static void mobRewards(){
         int randomNum = ThreadLocalRandom.current().nextInt(0, 5);
         currentSelectedItem = consumables.getItem("Lirys:Healing_Potion");
-        player.addItemToInventory();
+        consumables.addItemToPlayerInventory(currentSelectedItem);
         System.out.println(mob.getName() + " Dropped "+ randomNum + " " + currentSelectedItem.getItemName());
         currentSelectedItem.addItemCount(randomNum);
     }

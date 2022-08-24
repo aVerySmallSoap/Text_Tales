@@ -97,7 +97,7 @@ public class UserActions {
             }
         } else if(choice == 3){
             Helper.Separator(5);
-            player.getItemsInventory();
+            currentSelectedItem.getItemsFromPlayerInventory();
             Actions();
         }else if(choice == 4){
         Run();
