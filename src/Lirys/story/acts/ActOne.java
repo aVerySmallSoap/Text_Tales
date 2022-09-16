@@ -17,6 +17,7 @@ import static Lirys.logic.GameLogic.*;
 public class ActOne {
 
     //A variable used to check, whether the programme is on ACT_ONE
+    //TODO: Implement an Interface
     public boolean isOnACTOne = true;
 
     /**
@@ -71,6 +72,8 @@ public class ActOne {
                 He started to walk away, bearing the information in mind, you started to resolve yourself and continued to forge onwards.""");
 
         currentSelectedItem = consumables.getItem("Lirys:Healing_Potion");
+        currentSelectedItem.addItemToPlayerInventory(currentSelectedItem);
+        currentSelectedItem.getPlayerInventoryCollection();
         currentSelectedItem.addItemCount(5);
         Helper.enterAnythingToContinue();
         GameLogic.encounter();

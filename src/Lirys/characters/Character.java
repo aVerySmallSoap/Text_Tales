@@ -23,7 +23,7 @@ public abstract class Character {
     /*
     * Holds the value of three things:
     * Maximum hit-points of a character
-    * BASE attack damage of a character
+    * BASE attack-damage of a character
     * BASE defense of a character*/
     private final int baseMaxHP, baseAttack,baseDefense;
 
@@ -38,7 +38,7 @@ public abstract class Character {
      * @param name the name of this entity
      * @param baseMaxHP the max health points of this entity
      * @param HP the <i>current</i> health points of this entity
-     * @param baseAttack the <i>base</i> attack damage of this entity
+     * @param baseAttack the <i>base</i> attack-damage of this entity
      * @param baseDefense the <i>base</i> defense/armour of this entity
      */
     public Character(String name, int baseMaxHP, int HP, int baseAttack, int baseDefense){
@@ -149,7 +149,7 @@ public abstract class Character {
     }
 
     // Critical chance for all Character types
-    // public void crit(){}
+    // public void critical(){}
 
     //TODO: skills
     /*

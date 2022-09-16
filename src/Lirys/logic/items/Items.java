@@ -1,5 +1,4 @@
 package Lirys.logic.items;
-
 import Lirys.logic.Helper;
 
 import java.util.*;
@@ -76,6 +75,12 @@ public abstract class Items {
         );
     }
 
+    public void getPlayerInventoryCollection(){
+        PLAYER_INVENTORY.forEach( (ID, Item) ->
+            System.out.println(ID + " " + Item.getItemName())
+    );
+    }
+
     public int getItemCount() { return itemCount;}
 
     public String getITEM_STRING_TAG() {return ITEM_STRING_TAG;}
@@ -102,24 +107,20 @@ public abstract class Items {
     }
 
     public void addItemToPlayerInventory(Items Item){
-        for (int i = 0; i < PLAYER_INVENTORY.size(); i++) {
-            if (PLAYER_INVENTORY.get(i) == null){
-                PLAYER_INVENTORY.put(Item.getITEM_NUMBER_TAG(), Item);
-            }else{
-                i++;
-            }
-        }
+        PLAYER_INVENTORY.put(this.getITEM_NUMBER_TAG(), Item);
     }
-
+    //TODO: display list to player
     public void getItemsFromPlayerInventory(){
-        PLAYER_INVENTORY.forEach(
-                (inventorySlot, Item) -> {
-                    System.out.println("Slot: " + inventorySlot);
-                    System.out.println("Name: " + Item.getItemName());
-                    System.out.println("Count: " + Item.getItemCount());
-                    Helper.Separator(5);
-                }
-        );
+//        for(Map.Entry<Integer, Items> items: PLAYER_INVENTORY.entrySet()){
+//            int id = items.getKey();
+//            Items item = items.getValue();
+        //TODO: REVISE, a should look for the items unique ID instead of a constant
+            for(int i = 0; i < PLAYER_INVENTORY.size(); i++){
+                var a = PLAYER_INVENTORY.get(i);
+                System.out.println("Name: " + a.getItemName());
+                System.out.println("Amount: " + a.getItemCount());
+            }
+//        }
     }
 
     public static void removeItemFromPlayerInventory(){
